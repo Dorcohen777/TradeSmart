@@ -1,0 +1,125 @@
+.align-center {
+   align-items: center;
+}
+
+.btn-style {
+   padding: 0.6rem 2rem;
+   background-color: $clr3;
+   color: $clr2;
+   text-decoration: none;
+   border: none;
+   font-weight: bold;
+   border-radius: 0.3rem;
+
+   a {
+      color: $clr1;
+   }
+
+   &:hover {
+      background-color: darken($color: #121e45, $amount: 5);
+   }
+}
+
+.btn-style-2 {
+   padding: 0.6rem;
+   background-color: transparent;
+   color: $clr2;
+   text-decoration: none;
+   border: 1px solid $clr2;
+   font-weight: bold;
+   border-radius: 0.2rem;
+
+   a {
+      color: $clr2;
+   }
+}
+
+.btn-style-3 {
+   padding: 0.5rem;
+   background-color: $clr1;
+   color: $clr2;
+   text-decoration: none;
+   font-weight: bold;
+   border-radius: 0.3rem;
+   outline: none;
+   border: none;
+   cursor: pointer;
+   a {
+      columns: $clr2;
+   }
+
+   &:hover {
+      background-color: darken($color: $clr1, $amount: 10);
+   }
+}
+
+.pointer {
+   cursor: pointer;
+}
+
+.underline-style {
+   display: inline-block;
+   border-bottom: 1px solid $clr3;
+}
+
+.underline-style-white {
+   display: inline-block;
+   border-bottom: 1px solid $clr2;
+}
+
+.input-style-1 {
+   padding: 0.5rem;
+   border: none;
+   outline: solid 2px #8f8f8f;
+   font-size: 1.3rem;
+   border-radius: 0.3rem;
+   &:focus {
+      outline: solid 2px $clr1;
+      border: none;
+   }
+}
+
+.before-underline-style {
+   &::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      background-color: $clr3;
+      width: 70%;
+      height: 3px;
+   }
+}
+
+// dashboard helpers
+.input-container-style-dash {
+   color: $clr9;
+   background-color: $clr8;
+   width: 100%;
+   padding: 1rem;
+   border-radius: 0.3rem;
+   font-size: 1rem;
+   margin-block-end: 1rem;
+   input {
+      border: none;
+      outline: 1px solid #3f4d73;
+      border-radius: 0.2rem;
+      padding: 0.3rem;
+      background-color: #3f4d73;
+      color: $clr9;
+      &::placeholder {
+         color: $clr9;
+      }
+
+      &:hover {
+         outline: 2px solid $clr1;
+         border: none;
+      }
+
+      &:focus {
+         outline: 1px solid $clr1;
+         border: none;
+      }
+   }
+}
+
+

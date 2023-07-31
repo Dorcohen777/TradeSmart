@@ -1,0 +1,210 @@
+.dashboard-main-container {
+   display: grid;
+   grid-template-columns: minmax(2%, auto) minmax(64%, 1fr) (
+         minmax(17%, 1fr) minmax(17%, 1fr)
+      );
+   height: 100vh;
+   background-color: $clr7;
+   color: $clr9;
+   padding-left: 1rem;
+
+   .transaction-data-container {
+      grid-column: 2;
+      height: 100%;
+      overflow-y: auto;
+      &.transaction-data-container {
+         scrollbar-width: thin;
+         scrollbar-color: $clr8 #ffffff;
+      }
+
+      &.transaction-data-container::-webkit-scrollbar {
+         width: 3px;
+      }
+
+      &.transaction-data-container::-webkit-scrollbar-track {
+         background: #ffffff;
+      }
+
+      &.transaction-data-container::-webkit-scrollbar-thumb {
+         background-color: $clr8;
+         border-radius: rem(5px);
+         border: 5px none #ffffff;
+      }
+
+      .tr-no-trades-msg {
+         display: flex;
+      }
+
+      .dashboard-search {
+         background-color: $clr8;
+         border: none;
+         padding: 0.3rem;
+         color: $clr9;
+         border-radius: 0.3rem;
+         margin-inline-start: 0.2rem;
+         margin-block-end: 0.5rem;
+         &::placeholder {
+            color: $clr9;
+         }
+
+         &:focus{
+            border: none;
+            outline: 1px solid $clr1;
+         }
+      }
+
+      .transaction-table {
+         width: 100%;
+         text-align: center;
+
+         .table-header-titles-container {
+            background-color: $clr8;
+            text-transform: uppercase;
+            th {
+               font-size: 0.8rem;
+               font-weight: 400;
+            }
+         }
+
+         .td-symbol {
+            text-transform: uppercase;
+         }
+
+         .td-status {
+            font-size: 0.9rem;
+
+            &.win {
+               background-color: #00b399;
+               color: white;
+            }
+
+            &.lose {
+               background-color: #fd6c8f;
+               color: white;
+            }
+         }
+
+         .td-pl {
+            &.positive {
+               color: #00b399;
+            }
+
+            &.negative {
+               color: #fd6c8f;
+            }
+         }
+
+         .td-side {
+            border: none;
+            outline: 1px solid #00b399;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            border-radius: 0.1rem;
+         }
+
+         tbody {
+            tr {
+               transition: 0.3s;
+               &:hover {
+                  background-color: $clr8;
+               }
+            }
+         }
+      }
+   }
+
+   .transaction-data-container {
+      .table-title {
+         font-size: 1.3rem;
+      }
+
+      .dashboard-titles {
+         display: flex;
+         align-items: center;
+         gap: 1rem;
+         margin-block-start: 1rem;
+         border-bottom: 3px solid $clr8;
+
+         .dash-acc-data-container {
+            background-color: $clr8;
+            padding: 1rem;
+            border-radius: 0.2rem;
+            margin-block-end: 0.3rem;
+         }
+      }
+
+      .dashboard-actions-main-container{
+         display: flex;
+         align-items: center;
+         gap: 2rem;
+         padding: 0.2rem 0;
+
+         .stock-alert-btn-container{
+
+            a{
+               color: white;
+            }
+         }
+      }
+   }
+
+   .new-trade-main-container {
+      grid-column: 3;
+      grid-row: 1;
+      padding: 0.6rem;
+      border-left: 3px solid $clr8;
+
+      .transaction-first-container{
+
+         .new-strategy-container{
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+         }
+      }
+
+      .transaction-new-trade-container {
+         display: flex;
+         flex-direction: column;
+         gap: 0.4rem;
+
+         &::placeholder {
+            color: $clr9;
+         }
+         button {
+            margin-block-start: 0.4rem;
+         }
+      }
+   }
+
+   .calculation-container {
+      grid-column: 4;
+      padding: 0.6rem;
+      border-left: 3px solid $clr8;
+
+      .exit-calculator-inner-container {
+         display: flex;
+         flex-direction: column;
+         gap: 0.4rem;
+
+         button {
+            margin-block-start: 0.4rem;
+         }
+      }
+
+      .dashboard-risk-main-container {
+         .dashboard-risk-inner-container {
+            display: flex;
+            flex-direction: column;
+            gap: 0.9rem;
+            input {
+               width: 100%;
+               padding: 0.5rem;
+            }
+            button {
+               margin-block-start: 0.4rem;
+            }
+         }
+      }
+   }
+}

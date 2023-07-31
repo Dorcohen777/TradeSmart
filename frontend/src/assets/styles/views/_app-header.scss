@@ -1,0 +1,34 @@
+.app-header {
+   position: fixed;
+   width: 100%;
+   background-color: $clr1;
+   z-index: 3;
+   ul {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: 0.3rem 0;
+      gap: 2rem;
+
+      .links-container {
+         display: flex;
+         gap: 2rem;
+      }
+
+      div:last-child {
+         padding-inline-end: 1rem;
+      }
+
+      li {
+         text-decoration: none;
+         list-style-type: none;
+      }
+
+      a {
+         color: white;
+      }
+      .user-img {
+         width: rem(40px);
+      }
+   }
+}

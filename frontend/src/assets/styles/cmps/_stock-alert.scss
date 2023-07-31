@@ -1,0 +1,88 @@
+.stock-alert-main-container {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   position: fixed;
+   top: 0;
+   right: 0;
+   bottom: 0;
+   left: 0;
+
+   .stock-alert-child-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      position: fixed;
+      width: 100%;
+      max-width: rem(550px);
+      padding: 1rem;
+      border-radius: 1rem;
+      background-color: $clr8;
+
+      .stock-alert-items-container {
+         display: flex;
+         flex-direction: column;
+         justify-content: left;
+         align-items: left;
+         gap: 0.5rem;
+
+         h2{
+            padding-block-start: 1rem;
+         }
+      }
+
+      .stock-alert-exit-btn {
+         position: absolute;
+         top: rem(2px);
+         right: rem(7px);
+      }
+
+      // Table styles
+      .stocks-alert-list-container {
+         padding-block-start: 1.5rem;
+         max-height: rem(400px);
+         overflow-y: auto;
+         /* Customize the scrollbar */
+         &::-webkit-scrollbar {
+            width: 8px; 
+         }
+
+         &::-webkit-scrollbar-thumb {
+            background-color: $clr1; 
+            border-radius: 4px; 
+         }
+
+         &::-webkit-scrollbar-track {
+            background-color: #f0f0f0; 
+            border-radius: 4px; 
+         }
+
+         &::-webkit-scrollbar-track:hover {
+            background-color: #e0e0e0; 
+         }
+
+         table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 1px solid $clr7;
+            margin-bottom: 20px;
+
+            th,
+            td {
+               padding: 10px;
+               text-align: left;
+               border-bottom: 1px solid $clr7;
+            }
+
+            th {
+               background-color: $clr8;
+            }
+
+            tr {
+               &:hover {
+                  background-color: $clr1;
+               }
+            }
+         }
+      }
+   }
+}

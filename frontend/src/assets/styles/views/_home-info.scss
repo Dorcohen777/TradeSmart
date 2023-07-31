@@ -1,0 +1,34 @@
+.info-main-container {
+    
+
+   .info-inner-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+        flex-wrap: wrap;
+
+      .info-text-container{
+        display: flex;
+        flex-direction: column;
+        gap: 1.3rem;
+        max-width: rem(700px);
+        background-color: $clr3;
+        padding: 3rem;
+        border-radius: 1rem;
+        h2{
+            color: white;
+        }
+        p{
+            color: white;
+        }
+      }
+
+      .info-img-container {
+        margin: 14rem 0;
+         .info-img-one {
+            width: rem(700px);
+            height: auto;
+         }
+      }
+   }
+}

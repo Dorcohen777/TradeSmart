@@ -1,0 +1,63 @@
+.hero-container {
+   height: 100vh;
+   background-color: $clr1;
+
+   .hero-info-container {
+      display: flex;
+      justify-content: space-between;
+      color: $clr2;
+   }
+
+   .hero-info {
+      max-width: rem(600px);
+
+      h2 {
+         position: relative;
+         z-index: 1;
+         font-size: 3.3rem;
+
+         &::before {
+            content: '';
+            position: absolute;
+            z-index: -1;
+            bottom: 9px;
+            width: 100%;
+            height: rem(30px);
+            border-radius: 0.3rem;
+            background-color: $clr3;
+         }
+      }
+      h3 {
+         font-size: 2.3rem;
+         
+      }
+      .hero-actions {
+         display: flex;
+         gap: 1rem;
+         margin-block-start: 1rem;
+      }
+   }
+   .home-page-icons-main-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      padding-block-start: rem(90px);
+   }
+}
+
+.homepage-icon-style {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   padding: 1rem;
+   color: $clr2;
+   width: fit-content;
+   height: fit-content;
+   background-color: $clr4;
+   border-radius: 0.9rem;
+   img {
+      height: rem(50px);
+      width: auto;
+   }
+}

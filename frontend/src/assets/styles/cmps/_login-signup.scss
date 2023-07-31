@@ -1,0 +1,155 @@
+.login-page {
+   display: flex;
+   align-items: center;
+   justify-content: space-around;
+   width: 100vw;
+   height: 100vh;
+
+   .login-inner-container {
+      display: flex;
+      align-items: center;
+      flex-direction: column-reverse;
+      width: 50%;
+
+      .login-info-container {
+         width: 30%;
+         height: 50%;
+
+         input,
+         button,
+         h2 {
+            width: 100%;
+            min-width: rem(200px);
+         }
+
+         .btn-login-gradient {
+            background: rgb(178, 200, 250);
+            background: -moz-linear-gradient(
+               90deg,
+               rgba(178, 200, 250, 1) 11%,
+               rgba(41, 101, 241, 0.8155637254901961) 50%,
+               rgba(219, 201, 253, 1) 90%
+            );
+            background: -webkit-linear-gradient(
+               90deg,
+               rgba(178, 200, 250, 1) 11%,
+               rgba(41, 101, 241, 0.8155637254901961) 50%,
+               rgba(219, 201, 253, 1) 90%
+            );
+            background: linear-gradient(
+               90deg,
+               rgba(178, 200, 250, 1) 11%,
+               rgba(41, 101, 241, 0.8155637254901961) 50%,
+               rgba(219, 201, 253, 1) 90%
+            );
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#b2c8fa",endColorstr="#dbc9fd",GradientType=1);
+            border: none;
+            padding: 0.5rem;
+            border-radius: 0.4rem;
+            color: white;
+            transition: transform 0.2s ease;
+            margin-block-start: 0.5rem;
+
+            &:hover {
+               transform: scale(1.1);
+            }
+         }
+      }
+   }
+
+   p:first-child {
+      display: flex;
+      gap: 0.5rem;
+      justify-content: space-around;
+      margin-block-end: 2rem;
+      button {
+         padding: 0.5rem;
+         border: none;
+         border-radius: 0.4rem;
+         background-color: $clr3;
+         color: $clr2;
+      }
+   }
+   .login-signup-container {
+      display: flex;
+      flex-direction: column;
+
+      .login-signup-form {
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+         gap: 1rem;
+
+         input {
+            border: 1px solid $clr1;
+            border-radius: 0.3rem;
+            padding: 0.5rem;
+
+            &:focus {
+               outline: none;
+            }
+         }
+
+         h2 {
+            color: $clr3;
+         }
+      }
+   }
+   .login-image-container {
+      width: 50%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      background: rgb(178, 200, 250);
+      background: -moz-linear-gradient(
+         90deg,
+         rgba(178, 200, 250, 1) 0%,
+         rgba(219, 201, 253, 1) 57%,
+         rgba(41, 101, 241, 0.7651435574229692) 100%
+      );
+      background: -webkit-linear-gradient(
+         90deg,
+         rgba(178, 200, 250, 1) 0%,
+         rgba(219, 201, 253, 1) 57%,
+         rgba(41, 101, 241, 0.7651435574229692) 100%
+      );
+      background: linear-gradient(
+         90deg,
+         rgba(178, 200, 250, 1) 0%,
+         rgba(219, 201, 253, 1) 57%,
+         rgba(41, 101, 241, 0.7651435574229692) 100%
+      );
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#b2c8fa",endColorstr="#2965f1",GradientType=1);
+
+      .login-signup-img {
+         width: rem(650px);
+         margin-block-start: 5rem;
+      }
+
+      .inner-image-login-container {
+         height: fit-content;
+         width: fit-content;
+         padding: 3rem;
+         background-color: #4854795b;
+         max-width: rem(600px);
+         border-radius: 0.5rem;
+         color: white;
+         span {
+            color: $clr3;
+         }
+         h2 {
+            font-size: 3.5rem;
+         }
+
+         h3 {
+            font-size: 1.5rem;
+         }
+
+         h3:last-child {
+            color: $clr3;
+         }
+      }
+   }
+}

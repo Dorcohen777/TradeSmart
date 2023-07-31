@@ -1,0 +1,32 @@
+.quote-main-container {
+   margin: 8rem 0;
+   .quote-title {
+      color: $clr3;
+      font-size: 3rem;
+      margin-block-end: 2rem;
+      position: relative;
+   }
+   .quote-inner-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10rem;
+
+      .quote-container-style {
+         background-color: #4169e1;
+         padding: 3rem;
+         max-width: rem(1000px);
+         text-align: center;
+         border-radius: 1rem;
+         color: white;
+         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+         p {
+            margin-block-start: 2rem;
+         }
+
+         span {
+            font-size: 2.2rem;
+         }
+      }
+   }
+}

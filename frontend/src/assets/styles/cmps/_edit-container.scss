@@ -1,0 +1,52 @@
+.edit-container {
+   position: fixed;
+   display: flex;
+   justify-content: center;
+   align-items: start;
+   padding: rem(145px) 0 rem(80px);
+   top: 0;
+   left: 0;
+   width: 100%;
+   
+   .edit-content {
+      position: relative;
+      border-radius: 0.7rem;
+      height: fit-content;
+      width: fit-content;
+      max-width: rem(768px);
+      padding: 4rem;
+
+      h2 {
+         margin-block-end: 0.6rem;
+         border-bottom: solid 1px white;
+      }
+      h3 {
+         margin-block-end: 1.3rem;
+      }
+
+      .btn-exit {
+         position: absolute;
+         right: rem(15px);
+         top: rem(10px);
+      }
+
+      .edit-symbol-name {
+         text-transform: uppercase;
+      }
+
+      .edit-inputs {
+         display: flex;
+         flex-direction: column;
+         align-items: flex-start;
+         gap: rem(6px);
+
+         button {
+            margin-block-start: 0.3rem;
+            width: 100%;
+         }
+      }
+      input {
+         margin-block-end: 1rem;
+      }
+   }
+}
