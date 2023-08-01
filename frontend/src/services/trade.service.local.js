@@ -17,6 +17,9 @@ export const tradeService = {
    calculatePercentageAndPrice,
    saveNewStrategy,
    filterStrategyByUser,
+   emptyTrade,
+   newRiskManagement,
+   newCalcExitPoint,
 }
 window.cs = tradeService
 
@@ -119,4 +122,35 @@ function calculatePercentageAndPrice(riskAmount, sharesAmount, sharesPrice) {
       percentageDecrease: percentageDecrease.toFixed(2),
       newPricePerShare: newPricePerShare.toFixed(2),
    }
+}
+
+function emptyTrade(){
+   const newTrade = {
+      symbol: '',
+      amount: 0,
+      entryPrice: 0,
+      exitPrice: 0,
+      day: '',
+      pl: 0,
+      timestamp: null,
+      strategyType: null,
+   }
+   return newTrade
+}
+
+function newRiskManagement(){
+   const newRiskManagement = {
+      size: 0,
+      percentage: 0,
+   }
+   return newRiskManagement
+}
+
+function newCalcExitPoint(){
+   const newCalc = {
+      tradeRisk: 0,
+      sharesAmount: 0,
+      riskEntryPrice: 0,
+   }
+   return newCalc
 }

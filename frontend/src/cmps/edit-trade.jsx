@@ -102,12 +102,11 @@ export function EditTrade() {
 
                {userStrategy.length ? (
                   <>
-                     <label htmlFor=''>Set strategy</label>
                      <select
                         value={selectedStrategy}
                         onChange={onStrategyChange}
                      >
-                        <option value={'No strategy'}>remove strategy</option>
+                        <option value={'No strategy'}>Select strategy</option>
                         {userStrategy.map((str, idx) => {
                            return (
                               <option key={idx} value={str.strategyName}>
@@ -118,7 +117,7 @@ export function EditTrade() {
                      </select>
                   </>
                ) : (
-                  <p>No strategies found</p>
+                  <p>No strategies found, <br/> create new one</p>
                )}
 
                <button
