@@ -122,4 +122,23 @@
    }
 }
 
+.scroll-bar-style-2 {
+   &.transaction-data-container {
+      scrollbar-width: thin;
+      scrollbar-color: #4169e1 #ffffff;
+   }
 
+   &.transaction-data-container::-webkit-scrollbar {
+      width: 3px;
+   }
+
+   &.transaction-data-container::-webkit-scrollbar-track {
+      background: #ffffff;
+   }
+
+   &.transaction-data-container::-webkit-scrollbar-thumb {
+      background-color: #4169e1;
+      border-radius: 5px;
+      border: none;
+   }
+}

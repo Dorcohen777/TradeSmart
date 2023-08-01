@@ -20,6 +20,9 @@ export const tradeService = {
    emptyTrade,
    newRiskManagement,
    newCalcExitPoint,
+   calcStrategyWinRate,
+   calculateAccountPl,
+   calculateWinRate,
 }
 window.cs = tradeService
 
@@ -68,19 +71,18 @@ async function getTrades(userId, storeTrades) {
       (trade) => trade.owner._id === userId
    )
 
-   console.log('filterTradesByUser', filterTradesByUser)
    return filterTradesByUser
 }
-async function filterStrategyByUser(userId){
+async function filterStrategyByUser(userId) {
    const loadStrategy = utilService.loadFromStorage(STRATEGY_KEY)
    const filterStrategy = loadStrategy.filter((str) => str.owner._id === userId)
    return filterStrategy
 }
 
-async function saveNewStrategy(newStrategy){
-newStrategy.owner = userService.getLoggedinUser()
-const saveStrategy = await storageService.post(STRATEGY_KEY, newStrategy)
-return saveStrategy
+async function saveNewStrategy(newStrategy) {
+   newStrategy.owner = userService.getLoggedinUser()
+   const saveStrategy = await storageService.post(STRATEGY_KEY, newStrategy)
+   return saveStrategy
 }
 
 function calculatePL(symbol, sharesAmount, entryPrice, exitPrice) {
@@ -88,7 +90,7 @@ function calculatePL(symbol, sharesAmount, entryPrice, exitPrice) {
    const totalCost = sharesAmount * entryPrice
    const totalRevenue = sharesAmount * exitPrice
    const profitLoss = totalRevenue - totalCost
-   const fixedProfitLoss = Math.round(profitLoss * 100) / 100; 
+   const fixedProfitLoss = Math.round(profitLoss * 100) / 100
    return fixedProfitLoss
 }
 
@@ -103,7 +105,7 @@ function calculatePercentageAndPrice(riskAmount, sharesAmount, sharesPrice) {
    console.log('riskAmount', riskAmount)
    console.log('sharesAmount', sharesAmount)
    console.log('sharesPrice', sharesPrice)
-   
+
    // Calculate the total cost of the investment
    const totalCost = sharesAmount * sharesPrice
 
@@ -124,7 +126,7 @@ function calculatePercentageAndPrice(riskAmount, sharesAmount, sharesPrice) {
    }
 }
 
-function emptyTrade(){
+function emptyTrade() {
    const newTrade = {
       symbol: '',
       amount: 0,
@@ -138,7 +140,7 @@ function emptyTrade(){
    return newTrade
 }
 
-function newRiskManagement(){
+function newRiskManagement() {
    const newRiskManagement = {
       size: 0,
       percentage: 0,
@@ -146,11 +148,41 @@ function newRiskManagement(){
    return newRiskManagement
 }
 
-function newCalcExitPoint(){
+function newCalcExitPoint() {
    const newCalc = {
       tradeRisk: 0,
       sharesAmount: 0,
       riskEntryPrice: 0,
    }
    return newCalc
+}
+
+// calculation functions for dashboard
+
+function calculateAccountPl(userTrades) {
+   const plArr = userTrades.map((trade) => trade.pl) // getting array
+   const userPl = plArr.reduce(
+      (accumulator, currentValue) => accumulator + currentValue,
+      0
+   )
+   return userPl
+}
+
+function calculateWinRate(userTrades) {
+   const totalTrades = userTrades.length
+   if (totalTrades === 0) {
+      return 0
+   }
+
+   const winningTrades = userTrades.filter((trade) => trade.pl > 0)
+   const winRate = (winningTrades.length / totalTrades) * 100
+   return winRate.toFixed(2)
+}
+
+// 1.we need the user traders
+// 2. check in each trade strategy how many winner and loser for each strategy
+// 3. calc the win rate for each strategy
+// 4. display it to the user
+function calcStrategyWinRate(userTrades) {
+   // console.log('userTrades from service', userTrades)
 }

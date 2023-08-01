@@ -1,6 +1,7 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { tradeService } from '../../services/trade.service.local'
 import { utilService } from '../../services/util.service'
+import { useSelector } from 'react-redux'
 
 export function SideBarLeft({ addTrade }) {
    const [newTrade, setNewTrade] = useState(tradeService.emptyTrade())

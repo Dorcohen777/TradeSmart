@@ -21,7 +21,6 @@ export function UserDashboard() {
    const [accountWinRate, setAccountWinRate] = useState(0)
    const [userTrades, setUserTrades] = useState([])
 
-
    useEffect(() => {
       const fetchTrades = async () => {
          const trades = await tradeService.getTrades(user._id, storeTrades)
@@ -35,32 +34,14 @@ export function UserDashboard() {
    }, [storeTrades, user._id])
 
    useEffect(() => {
-      calculateAccountPl(userTrades)
-      calculateWinRate(userTrades)
+      const accountPl = tradeService.calculateAccountPl(userTrades)
+      setUserPl(accountPl)
+
+      const accountWinRate = tradeService.calculateWinRate(userTrades)
+      setAccountWinRate(accountWinRate)
    }, [userTrades])
 
-   function calculateAccountPl(userTrades) {
-      const plArr = userTrades.map((trade) => trade.pl) // getting array
-      const userPl = plArr.reduce(
-         (accumulator, currentValue) => accumulator + currentValue,
-         0
-      )
-      setUserPl(userPl)
-   }
-
-   function calculateWinRate(userTrades) {
-      const totalTrades = userTrades.length
-      if (totalTrades === 0) {
-         return 0
-      }
-
-      const winningTrades = userTrades.filter((trade) => trade.pl > 0)
-      const winRate = (winningTrades.length / totalTrades) * 100
-      setAccountWinRate(winRate.toFixed(2))
-   }
-
    async function onRemoveTrade(tradeId) {
-      console.log('tradeId', tradeId)
       await removeTrade(tradeId)
    }
 
@@ -94,11 +75,11 @@ export function UserDashboard() {
                />
             </div>
 
-            <div className='calculation-container'>
+            <div className='calculation-container scroll-bar-style-2'>
                <CalcContainer />
             </div>
 
-            <div className='new-trade-main-container'>
+            <div className='new-trade-main-container scroll-bar-style-2'>
                <SideBarLeft addTrade={addTrade} />
             </div>
          </section>

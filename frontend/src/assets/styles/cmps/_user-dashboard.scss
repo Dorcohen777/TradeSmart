@@ -47,7 +47,7 @@
             color: $clr9;
          }
 
-         &:focus{
+         &:focus {
             border: none;
             outline: 1px solid $clr1;
          }
@@ -133,15 +133,14 @@
          }
       }
 
-      .dashboard-actions-main-container{
+      .dashboard-actions-main-container {
          display: flex;
          align-items: center;
          gap: 2rem;
          padding: 0.2rem 0;
 
-         .stock-alert-btn-container{
-
-            a{
+         .stock-alert-btn-container {
+            a {
                color: white;
             }
          }
@@ -149,14 +148,14 @@
    }
 
    .new-trade-main-container {
+      height: 100%;
+      overflow-y: auto;
       grid-column: 3;
       grid-row: 1;
       padding: 0.6rem;
       border-left: 3px solid $clr8;
-
-      .transaction-first-container{
-
-         .new-strategy-container{
+      .transaction-first-container {
+         .new-strategy-container {
             display: flex;
             flex-direction: column;
             gap: 0.4rem;
@@ -178,10 +177,11 @@
    }
 
    .calculation-container {
+      height: 100%;
+      overflow-y: auto;
       grid-column: 4;
       padding: 0.6rem;
       border-left: 3px solid $clr8;
-
       .exit-calculator-inner-container {
          display: flex;
          flex-direction: column;
@@ -205,6 +205,6 @@
                margin-block-start: 0.4rem;
             }
          }
-      }
+      }  
    }
 }
