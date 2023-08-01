@@ -13,3 +13,21 @@
 .full {
     grid-column: 1 / -1;
 }
+
+
+@media (max-width: 1550px){
+   .main-layout{
+      grid-template-columns: minmax(120px, auto) 1fr minmax(120px, auto);
+   }
+}
+
+@media (max-width: 965px){
+   .main-layout{
+      // grid-template-columns: minmax(20px, auto) 1fr minmax(20px, auto);
+      grid-template-columns: 1fr;
+
+      > * {
+         grid-column: 1;
+      }
+   }
+}
