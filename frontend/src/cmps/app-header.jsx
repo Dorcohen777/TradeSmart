@@ -3,8 +3,11 @@ import { useSelector } from 'react-redux'
 import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
 import { login, logout, signup } from '../store/user.actions.js'
 import { LoginSignup } from './login-signup.jsx'
-import { useEffect, useState } from 'react'
 import { userService } from '../services/user.service'
+import { useEffect, useState } from 'react'
+
+// img
+import logo from '../assets/img/logo.png'
 
 export function AppHeader() {
    const user = useSelector((storeState) => storeState.userModule.user)
@@ -46,59 +49,45 @@ export function AppHeader() {
          showErrorMsg('Cannot logout')
       }
    }
-   console.log('currentPath', currentPath)
    return (
       <>
-        {currentPath !== '/user-dashboard' && currentPath !== '/user-dashboard/edit:' && currentPath !== '/user-dashboard/alert' && (
-            <header
-               className='app-header'
-               style={{ backgroundColor: headerStyle }}
-            >
-               <nav>
-                  <ul>
-                     <div className='links-container'>
-                        <Link to={'/'}>
-                           <li>Home</li>
-                        </Link>
-                        <Link to={'/sign-up'}>
-                           <li>Sign up</li>
-                        </Link>
-                        <Link to={'/about-us'}>
-                           <li>About us</li>
-                        </Link>
+         {currentPath !== '/user-dashboard' &&
+            currentPath !== '/user-dashboard/edit' &&
+            currentPath !== '/user-dashboard/alert' && (
+               <div className='navbar-main-container full'>
+                  <header className='app-header' style={{ backgroundColor: headerStyle }}>
+                     <div className='navbar-content'>                        
+                        
+                        <h2 className='h2-website-logo'><img src={logo} alt="TradeSmart logo" className='website-logo' />TradeSmart</h2>
+                        <nav>
+                           <ul>
+                              <li>
+                                 <Link to={'/'}>Home</Link>
+                              </li>
+                              <li>
+                                 <Link to={'/sign-up'}>Sign up</Link>
+                              </li>
+                              <li>
+                                 <Link to={'/about-us'}>About us</Link>
+                              </li>
+                              {user && (
+                                 <li>
+                                    <Link to={'/user-dashboard'}>User Dashboard</Link>
+                                 </li>
+                              )}
+                           </ul>
+                        </nav>
+                        
                         {user && (
-                           <Link to={'/user-dashboard'}>
-                              <li>User Dashboard</li>
-                           </Link>
+                           <div className='user-info'>
+                              <img src={user.imgUrl} className='user-img pointer' />
+                           </div>
                         )}
                      </div>
-                     <div>
-                        {user && (
-                           <img
-                              src={user.imgUrl}
-                              className='user-img pointer'
-                           />
-                        )}
-                     </div>
-                  </ul>
-                  {/* {user &&
-                    <span className="user-info">
-                        <Link to={`user/${user._id}`}>
-                            {user.imgUrl && <img src={user.imgUrl} />}
-                            {user.fullname}
-                        </Link>
-                        <span className="score">{user.score?.toLocaleString()}</span>
-                        <button onClick={onLogout}>Logout</button>
-                    </span>
-                }
-                {!user &&
-                    <section className="user-info">
-                        <LoginSignup onLogin={onLogin} onSignup={onSignup} />
-                    </section>
-                } */}
-               </nav>
-            </header>
-         )}
+                  </header>
+               </div>
+            )}
       </>
-   )
+   );
+   
 }
