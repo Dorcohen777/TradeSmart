@@ -49,7 +49,7 @@ export function AppHeader() {
    console.log('currentPath', currentPath)
    return (
       <>
-        {currentPath !== '/user-dashboard' && currentPath !== '/edit' && (
+        {currentPath !== '/user-dashboard' && currentPath !== '/user-dashboard/edit:' && currentPath !== '/user-dashboard/alert' && (
             <header
                className='app-header'
                style={{ backgroundColor: headerStyle }}
