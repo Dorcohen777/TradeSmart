@@ -1,21 +1,33 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 // img
 import heroImg from '../assets/img/hero-img3.png'
 import { HomeInfo } from './home-info'
 import { HomeQuote } from './home-quote'
 
+// user actions
+import { login, signup } from '../store/user.actions'
 //icons
 import iconOne from '../assets/img/homePage-icons/free.png'
 import iconStar from '../assets/img/homePage-icons/starg.png'
 import iconBright from '../assets/img/homePage-icons/brightness.png'
 import iconUnlock from '../assets/img/homePage-icons/unlock.png'
 import iconControl from '../assets/img/homePage-icons/tablet.png'
+import { tradeService } from '../services/trade.service.local'
 
 export function HomePage() {
    const dispatch = useDispatch()
+   const navigate = useNavigate()
+
+   async function onDemoClick() {
+      console.log('click')
+      const demoUser = tradeService.createDemoUser()
+      await signup(demoUser)
+      await login(demoUser)
+      navigate('/user-dashboard')
+   }
 
    return (
       <div>
@@ -28,7 +40,7 @@ export function HomePage() {
                   </h2>
                   <h3>Supercharge Your Trades with Data-Driven Insights!</h3>
                   <div className='hero-actions'>
-                     <Link to='/demo'>
+                     <Link onClick={() => onDemoClick()}>
                         <button className='btn-style pointer'>Try Demo</button>
                      </Link>
                      <Link to='/sign-up'>

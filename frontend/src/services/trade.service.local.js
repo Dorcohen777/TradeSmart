@@ -23,6 +23,7 @@ export const tradeService = {
    calcStrategyWinRate,
    calculateAccountPl,
    calculateWinRate,
+   createDemoUser,
 }
 window.cs = tradeService
 
@@ -178,45 +179,59 @@ function calculateWinRate(userTrades) {
    const winRate = (winningTrades.length / totalTrades) * 100
    return winRate.toFixed(2)
 }
-// calculate strategy win rate  
+// calculate strategy win rate
 function calcStrategyWinRate(userTrades) {
    const countStrategy = userTrades.reduce((acc, trade) => {
       if (trade.pl > 0) {
          if (acc[trade.strategyType]) {
-            acc[trade.strategyType].winCount += 1;
+            acc[trade.strategyType].winCount += 1
          } else {
             acc[trade.strategyType] = {
                winCount: 1,
                totalTrades: 0,
-            };
+            }
          }
       }
 
       if (acc[trade.strategyType]) {
-         acc[trade.strategyType].totalTrades += 1;
+         acc[trade.strategyType].totalTrades += 1
       } else {
          acc[trade.strategyType] = {
             winCount: 0,
             totalTrades: 1,
-         };
+         }
       }
 
-      return acc;
-   }, {});
+      return acc
+   }, {})
 
-   const winRateResults = [];
+   const winRateResults = []
 
    for (const strategyType in countStrategy) {
-      const winCount = countStrategy[strategyType].winCount;
-      const totalTrades = countStrategy[strategyType].totalTrades;
-      const winRate = (winCount / totalTrades) * 100;
+      const winCount = countStrategy[strategyType].winCount
+      const totalTrades = countStrategy[strategyType].totalTrades
+      const winRate = (winCount / totalTrades) * 100
 
       const resultObj = {
          strategyType: strategyType,
          winRate: parseFloat(winRate.toFixed(2)),
-      };
+      }
 
-      winRateResults.push(resultObj);
+      winRateResults.push(resultObj)
    }
-   return winRateResults;
+   return winRateResults
+}
+
+// home page functions
+function createDemoUser() {
+   const demoUser = {
+      fullname: 'demo',
+      imgUrl:
+         'https://www.talpiot.ac.il/wp-content/themes/matat-child/assets/images/12.png',
+      username: 'demoUser',
+      password: '123',
+      _id: utilService.makeId(),
+   }
+
+   return demoUser
 }

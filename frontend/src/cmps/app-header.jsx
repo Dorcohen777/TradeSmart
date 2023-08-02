@@ -46,10 +46,10 @@ export function AppHeader() {
          showErrorMsg('Cannot logout')
       }
    }
-
+   console.log('currentPath', currentPath)
    return (
       <>
-         {currentPath !== '/user-dashboard' || currentPath === '/edit'  && (
+        {currentPath !== '/user-dashboard' && currentPath !== '/edit' && (
             <header
                className='app-header'
                style={{ backgroundColor: headerStyle }}
