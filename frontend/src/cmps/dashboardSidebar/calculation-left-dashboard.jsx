@@ -3,7 +3,7 @@ import { tradeService } from '../../services/trade.service.local'
 import { utilService } from '../../services/util.service'
 import { useSelector } from 'react-redux'
 
-export function SideBarLeft({ addTrade }) {
+export function SideBarLeft({ addTrade, strategyWinRate }) {
    const [newTrade, setNewTrade] = useState(tradeService.emptyTrade())
    const [newStrategy, setNewStrategy] = useState({ strategyName: '' })
 
@@ -34,7 +34,7 @@ export function SideBarLeft({ addTrade }) {
       newTrade.timestamp = Date.now()
       addTrade(newTrade)
    }
-
+   console.log('from left-calculation', strategyWinRate)
    return (
       <section>
          <div className='transaction-first-container'>
@@ -94,9 +94,22 @@ export function SideBarLeft({ addTrade }) {
                </button>
             </div>
             <div className='input-container-style-dash'>
-               <h2>Strategy Data & Insight</h2>
-               <p>str1 50% winrate</p>
-               <p>str2 20% winrate</p>
+               <h2 className='underline-style-white'>
+                  Strategy Data & Insight
+               </h2>
+               <h4 className='underline-style-white'>Strategy WinRate</h4>
+               {strategyWinRate &&
+                  strategyWinRate.map((str, idx) => {
+                     if (str.strategyType !== 'null') {
+                        return (
+                           <p key={idx}>
+                              {str.strategyType} has {str.winRate}%
+                           </p>
+                        )
+                     } else {
+                        return null // Or any alternative content you want for invalid cases
+                     }
+                  })}
             </div>
          </div>
       </section>

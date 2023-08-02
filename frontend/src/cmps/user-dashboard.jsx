@@ -19,6 +19,7 @@ export function UserDashboard() {
    const user = useSelector((storeState) => storeState.userModule.user)
    const [accountPl, setUserPl] = useState(0)
    const [accountWinRate, setAccountWinRate] = useState(0)
+   const [strategyWinRate, setStrategyWinRate] = useState(null)
    const [userTrades, setUserTrades] = useState([])
 
    useEffect(() => {
@@ -39,6 +40,10 @@ export function UserDashboard() {
 
       const accountWinRate = tradeService.calculateWinRate(userTrades)
       setAccountWinRate(accountWinRate)
+
+      const strategyWinRateResult = tradeService.calcStrategyWinRate(userTrades)
+      console.log('strategyWinRateResult', strategyWinRateResult)
+      setStrategyWinRate(strategyWinRateResult)
    }, [userTrades])
 
    async function onRemoveTrade(tradeId) {
@@ -80,7 +85,7 @@ export function UserDashboard() {
             </div>
 
             <div className='new-trade-main-container scroll-bar-style-2'>
-               <SideBarLeft addTrade={addTrade} />
+               <SideBarLeft addTrade={addTrade} strategyWinRate={strategyWinRate} />
             </div>
          </section>
       </>

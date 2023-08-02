@@ -178,11 +178,45 @@ function calculateWinRate(userTrades) {
    const winRate = (winningTrades.length / totalTrades) * 100
    return winRate.toFixed(2)
 }
-
-// 1.we need the user traders
-// 2. check in each trade strategy how many winner and loser for each strategy
-// 3. calc the win rate for each strategy
-// 4. display it to the user
+// calculate strategy win rate  
 function calcStrategyWinRate(userTrades) {
-   // console.log('userTrades from service', userTrades)
+   const countStrategy = userTrades.reduce((acc, trade) => {
+      if (trade.pl > 0) {
+         if (acc[trade.strategyType]) {
+            acc[trade.strategyType].winCount += 1;
+         } else {
+            acc[trade.strategyType] = {
+               winCount: 1,
+               totalTrades: 0,
+            };
+         }
+      }
+
+      if (acc[trade.strategyType]) {
+         acc[trade.strategyType].totalTrades += 1;
+      } else {
+         acc[trade.strategyType] = {
+            winCount: 0,
+            totalTrades: 1,
+         };
+      }
+
+      return acc;
+   }, {});
+
+   const winRateResults = [];
+
+   for (const strategyType in countStrategy) {
+      const winCount = countStrategy[strategyType].winCount;
+      const totalTrades = countStrategy[strategyType].totalTrades;
+      const winRate = (winCount / totalTrades) * 100;
+
+      const resultObj = {
+         strategyType: strategyType,
+         winRate: parseFloat(winRate.toFixed(2)),
+      };
+
+      winRateResults.push(resultObj);
+   }
+   return winRateResults;
 }
