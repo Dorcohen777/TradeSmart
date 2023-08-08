@@ -42,7 +42,6 @@ export function UserDashboard() {
       setAccountWinRate(accountWinRate)
 
       const strategyWinRateResult = tradeService.calcStrategyWinRate(userTrades)
-      console.log('strategyWinRateResult', strategyWinRateResult)
       setStrategyWinRate(strategyWinRateResult)
    }, [userTrades])
 

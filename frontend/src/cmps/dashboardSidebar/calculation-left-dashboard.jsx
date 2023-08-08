@@ -97,17 +97,17 @@ export function SideBarLeft({ addTrade, strategyWinRate }) {
                <h2 className='underline-style-white'>
                   Strategy Data & Insight
                </h2>
-               <h4 className='underline-style-white'>Strategy WinRate</h4>
+               <h4>Strategy WinRate</h4>
                {strategyWinRate &&
-                  strategyWinRate.map((str, idx) => {
+                  strategyWinRate.map((str) => {
                      if (str.strategyType !== 'null') {
                         return (
-                           <p key={idx}>
+                           <p key={str.strategyType}>
                               {str.strategyType} has {str.winRate}%
                            </p>
                         )
                      } else {
-                        return null // Or any alternative content you want for invalid cases
+                        return null
                      }
                   })}
             </div>

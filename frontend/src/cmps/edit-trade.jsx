@@ -105,6 +105,7 @@ export function EditTrade() {
                      <select
                         value={selectedStrategy}
                         onChange={onStrategyChange}
+                        className='strategy-selector'
                      >
                         <option value={'No strategy'}>Select strategy</option>
                         {userStrategy.map((str, idx) => {
