@@ -166,7 +166,21 @@
             > * {
                margin: 0.2rem 0;
             }
+
+            .strategy-data-container{
+               background-color: #3f4d73;
+               padding: 0.4rem;
+               border-radius: 0.4rem;
+
+               .strategy-title{
+                  display: flex;
+                  align-items: center;
+                  gap: 0.3rem;
+               }
+            }
          }
+
+         
       }
 
       .transaction-new-trade-container {

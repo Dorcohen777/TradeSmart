@@ -97,20 +97,30 @@ export function SideBarLeft({ addTrade, strategyWinRate }) {
                <h2 className='underline-style-white'>
                   Strategy Data & Insight
                </h2>
-               <h4>Strategy WinRate</h4>
-               {strategyWinRate &&
-                  strategyWinRate.map((str) => {
-                     if (str.strategyType !== 'null') {
-                        return (
-                           <p key={str.strategyType}>
-                              {str.strategyType} has {str.winRate}%
-                           </p>
-                        )
-                     } else {
-                        return null
-                     }
-                  })}
-
+               <div className='strategy-data-container'>
+                  <h4>Strategy WinRate</h4>
+                  {strategyWinRate &&
+                     strategyWinRate.map((str) => {
+                        if (str.strategyType !== 'null') {
+                           return (
+                              <p key={str.strategyType} className='strategy-title'>
+                                 {str.strategyType}
+                                 <div
+                                    style={{
+                                       width: `${str.winRate}%`, 
+                                       height: '10px', 
+                                       backgroundColor: '#00B399',
+                                       borderRadius: '0.2rem',
+                                    }}
+                                 ></div>
+                                 {str.winRate}%
+                              </p>
+                           )
+                        } else {
+                           return null
+                        }
+                     })}
+               </div>
             </div>
          </div>
       </section>
