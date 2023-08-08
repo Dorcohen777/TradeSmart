@@ -54,13 +54,14 @@ function getCurrentDay() {
 
 function getDate() {
    const currentDate = new Date()
-   const year = currentDate.getFullYear() // e.g., 2023
-   const month = currentDate.getMonth() // 0 (January) to 11 (December)
-   const day = currentDate.getDate() // day of the month (1 to 31)
-   const hours = currentDate.getHours() // 0 to 23
+   const year = currentDate.getFullYear() 
+   const month = currentDate.getMonth() + 1 
+   const day = currentDate.getDate() 
+   const hours = currentDate.getHours() 
    const currDate = day + '/' + month + '/' + year
    return currDate
 }
+
 
 function saveToStorage(key, value) {
    localStorage.setItem(key, JSON.stringify(value))

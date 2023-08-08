@@ -93,7 +93,7 @@ export function SideBarLeft({ addTrade, strategyWinRate }) {
                   Add
                </button>
             </div>
-            <div className='input-container-style-dash'>
+            <div className='strategy-container input-container-style-dash'>
                <h2 className='underline-style-white'>
                   Strategy Data & Insight
                </h2>
@@ -110,6 +110,7 @@ export function SideBarLeft({ addTrade, strategyWinRate }) {
                         return null
                      }
                   })}
+
             </div>
          </div>
       </section>

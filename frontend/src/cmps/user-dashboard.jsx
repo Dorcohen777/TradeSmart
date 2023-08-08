@@ -35,14 +35,18 @@ export function UserDashboard() {
    }, [storeTrades, user._id])
 
    useEffect(() => {
+      // calculate account p/l
       const accountPl = tradeService.calculateAccountPl(userTrades)
       setUserPl(accountPl)
 
+      // calculate account win rate
       const accountWinRate = tradeService.calculateWinRate(userTrades)
       setAccountWinRate(accountWinRate)
 
+      // calculate each strategy win rate
       const strategyWinRateResult = tradeService.calcStrategyWinRate(userTrades)
       setStrategyWinRate(strategyWinRateResult)
+      
    }, [userTrades])
 
    async function onRemoveTrade(tradeId) {
