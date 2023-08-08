@@ -111,6 +111,7 @@ export function SideBarLeft({ addTrade, strategyWinRate }) {
                                        height: '10px', 
                                        backgroundColor: '#00B399',
                                        borderRadius: '0.2rem',
+                                       transition: '1s',
                                     }}
                                  ></div>
                                  {str.winRate}%
