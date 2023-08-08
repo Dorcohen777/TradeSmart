@@ -15,7 +15,7 @@ export function RootCmp() {
          <AppHeader />
          <main className='main-container full'>
             <Routes>
-               <Route path='/' element={<HomePage />} />
+               <Route path='/TradeSmart' element={<HomePage />} />
                <Route path='/sign-up' element={<LoginSignup />} />
                <Route path='/user-dashboard' element={<UserDashboard />}>
                   <Route path='edit/:id' element={<EditTrade />} />
