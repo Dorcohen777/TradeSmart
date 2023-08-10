@@ -15,6 +15,7 @@ export function AppHeader() {
    const currentPath = location.pathname
    const [headerStyle, setHeaderStyle] = useState('')
    const [isMenuOpen, setIsMenuOpen] = useState(false)
+   const dynamicParam = currentPath.split('/').pop() // Get the dynamic part of the URL
 
    useEffect(() => {
       if (currentPath !== '/') {
@@ -50,10 +51,11 @@ export function AppHeader() {
          showErrorMsg('Cannot logout')
       }
    }
+
    return (
       <>
          {currentPath !== '/user-dashboard' &&
-            currentPath !== '/user-dashboard/edit' &&
+            currentPath !== `/user-dashboard/edit/${dynamicParam}` &&
             currentPath !== '/user-dashboard/alert' && (
                <div className='navbar-main-container full'>
                   <header
@@ -69,10 +71,19 @@ export function AppHeader() {
                            />
                            TradeSmart
                         </h2>
-                        
-                        <div onClick={() => setIsMenuOpen(!isMenuOpen)} className='hamburger-menu'>&#9776;</div>
 
-                        <nav className={`nav-container ${isMenuOpen ? 'mobile-nav-open' : ''}`}>
+                        <div
+                           onClick={() => setIsMenuOpen(!isMenuOpen)}
+                           className='hamburger-menu'
+                        >
+                           &#9776;
+                        </div>
+
+                        <nav
+                           className={`nav-container ${
+                              isMenuOpen ? 'mobile-nav-open' : ''
+                           }`}
+                        >
                            <ul>
                               <li>
                                  <Link to={'/TradeSmart'}>Home</Link>

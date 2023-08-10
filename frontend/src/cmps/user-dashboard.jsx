@@ -11,6 +11,7 @@ import { CalcContainer } from './dashboardSidebar/calculation-dashboard'
 import { SideBarLeft } from './dashboardSidebar/calculation-left-dashboard'
 import { TableData } from './dashboardSidebar/table-dashboard'
 import { HeaderDashboard } from './dashboardSidebar/header-dashboard'
+import { UserboardNavBar } from '../pages/user-dashboard-nav-menu'
 
 export function UserDashboard() {
    const storeTrades = useSelector(
@@ -56,6 +57,11 @@ export function UserDashboard() {
    return (
       <>
          <section className='dashboard-main-container'>
+
+            <div >
+            <UserboardNavBar/>
+            </div>
+
             <div className='transaction-data-container'>
                <div className='dashboard-titles'>
                   <div className='dash-acc-data-container'>
@@ -76,7 +82,7 @@ export function UserDashboard() {
                <h2 className='table-title'>Transactions Panel</h2>
 
                <HeaderDashboard loadTrades={loadTrades} />
-
+               
                <TableData
                   onRemoveTrade={onRemoveTrade}
                   userTrades={userTrades}

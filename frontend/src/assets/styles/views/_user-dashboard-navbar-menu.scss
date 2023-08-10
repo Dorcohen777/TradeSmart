@@ -1,0 +1,11 @@
+.user-dashboard-navbar-container{
+    display: flex;
+    flex-direction: column;
+    grid-column: 1;
+    gap: 1.3rem;
+    margin-block-start: 2rem;
+
+    a{
+        color: $clr2;
+    }
+}
