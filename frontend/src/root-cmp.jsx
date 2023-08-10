@@ -9,6 +9,7 @@ import { UserDashboard } from './cmps/user-dashboard'
 import { EditTrade } from './cmps/edit-trade'
 import { StockAlert } from './cmps/stock-alert'
 import { AboutUs } from './pages/about'
+import { AiHelper } from './cmps/ai-helper'
 
 export function RootCmp() {
    return (
@@ -23,6 +24,7 @@ export function RootCmp() {
                   <Route path='alert' element={<StockAlert />} />
                </Route>
                <Route path='/about-us' element={<AboutUs/>}> </Route>
+               <Route path='/ai-helper' element={<AiHelper/>}> </Route>
             </Routes>
          </main>
       </div>

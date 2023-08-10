@@ -19,9 +19,11 @@
 @import './views/home-quote';
 @import './views/about-us';
 @import './views/user-dashboard-navbar-menu';
+
 // Components
 @import './cmps/root-cmp';
 @import './cmps/login-signup';
 @import './cmps/user-dashboard';
 @import './cmps/edit-container';
 @import './cmps/stock-alert';
+@import './cmps/ai-helper';
