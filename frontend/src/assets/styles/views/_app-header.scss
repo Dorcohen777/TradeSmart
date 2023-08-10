@@ -56,4 +56,44 @@
    .website-logo {
       width: rem(60px);
    }
+
+   .mobile-nav-open {
+      ul {
+         display: flex;
+         flex-direction: column;
+      }
+   }
+
+   .hamburger-menu {
+      display: none;
+   }
+}
+
+@media (max-width: 600px) {
+   .hamburger-menu {
+      position: relative;
+      display: block !important;
+      font-size: 2rem;
+   }
+
+   .nav-container {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background-color: $clr3;
+      overflow: hidden;
+
+      &.mobile-nav-open {
+         display: block;
+         max-height: rem(300px);
+      }
+
+      ul {
+         li {
+            padding: 0.5rem 0;
+         }
+      }
+   }
 }

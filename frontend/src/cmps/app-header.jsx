@@ -14,6 +14,7 @@ export function AppHeader() {
    const location = useLocation()
    const currentPath = location.pathname
    const [headerStyle, setHeaderStyle] = useState('')
+   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
    useEffect(() => {
       if (currentPath !== '/') {
@@ -68,7 +69,10 @@ export function AppHeader() {
                            />
                            TradeSmart
                         </h2>
-                        <nav>
+                        
+                        <div onClick={() => setIsMenuOpen(!isMenuOpen)} className='hamburger-menu'>&#9776;</div>
+
+                        <nav className={`nav-container ${isMenuOpen ? 'mobile-nav-open' : ''}`}>
                            <ul>
                               <li>
                                  <Link to={'/TradeSmart'}>Home</Link>
