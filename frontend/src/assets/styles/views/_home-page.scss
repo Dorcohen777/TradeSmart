@@ -8,6 +8,27 @@
       color: $clr2;
    }
 
+   .hero-info{
+      z-index: 5;
+   }
+
+   .hero-img::before{
+      content: '';
+      position: absolute;
+      width: 45%;
+      height: 50%;
+      right: 0;
+      top: 5%;
+      z-index: -1;
+      border-top-left-radius: 52%;
+      border-bottom-left-radius: 5%;
+      background-color: $clr3;
+   }
+
+   .hero-img{
+      z-index: 1;
+   }
+
    .hero-info {
       max-width: rem(600px);
       margin-block-start: 5rem;
@@ -71,6 +92,10 @@
       .hero-info{
          max-width: rem(800px);
       }
+   }
+
+   .hero-img::before{
+      display: none;
    }
 }
 
