@@ -8,6 +8,7 @@ import { LoginSignup } from './cmps/login-signup'
 import { UserDashboard } from './cmps/user-dashboard'
 import { EditTrade } from './cmps/edit-trade'
 import { StockAlert } from './cmps/stock-alert'
+import { AboutUs } from './pages/about'
 
 export function RootCmp() {
    return (
@@ -21,6 +22,7 @@ export function RootCmp() {
                   <Route path='edit/:id' element={<EditTrade />} />
                   <Route path='alert' element={<StockAlert />} />
                </Route>
+               <Route path='/about-us' element={<AboutUs/>}> </Route>
             </Routes>
          </main>
       </div>
