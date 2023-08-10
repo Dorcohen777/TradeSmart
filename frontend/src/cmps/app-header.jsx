@@ -55,10 +55,19 @@ export function AppHeader() {
             currentPath !== '/user-dashboard/edit' &&
             currentPath !== '/user-dashboard/alert' && (
                <div className='navbar-main-container full'>
-                  <header className='app-header' style={{ backgroundColor: headerStyle }}>
-                     <div className='navbar-content'>                        
-                        
-                        <h2 className='h2-website-logo'><img src={logo} alt="TradeSmart logo" className='website-logo' />TradeSmart</h2>
+                  <header
+                     className='app-header'
+                     style={{ backgroundColor: headerStyle }}
+                  >
+                     <div className='navbar-content'>
+                        <h2 className='h2-website-logo'>
+                           <img
+                              src={logo}
+                              alt='TradeSmart logo'
+                              className='website-logo'
+                           />
+                           TradeSmart
+                        </h2>
                         <nav>
                            <ul>
                               <li>
@@ -72,15 +81,20 @@ export function AppHeader() {
                               </li>
                               {user && (
                                  <li>
-                                    <Link to={'/user-dashboard'}>User Dashboard</Link>
+                                    <Link to={'/user-dashboard'}>
+                                       User Dashboard
+                                    </Link>
                                  </li>
                               )}
                            </ul>
                         </nav>
-                        
+
                         {user && (
                            <div className='user-info'>
-                              <img src={user.imgUrl} className='user-img pointer' />
+                              <img
+                                 src={user.imgUrl}
+                                 className='user-img pointer'
+                              />
                            </div>
                         )}
                      </div>
@@ -88,6 +102,5 @@ export function AppHeader() {
                </div>
             )}
       </>
-   );
-   
+   )
 }

@@ -10,7 +10,7 @@
 
    .hero-info {
       max-width: rem(600px);
-
+      margin-block-start: 5rem;
       h2 {
          position: relative;
          z-index: 1;
@@ -85,6 +85,13 @@
          align-items: center;
        
       }
+   }
+
+   .hero-info{
+      padding: 0 1rem;
+   }
+   .quote-title{
+      padding: 0 1rem;
    }
 }
 
