@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/TradeSmart/static/css/main.e4c0d1fe.css",
+    "main.css": "/TradeSmart/static/css/main.6e552003.css",
     "main.js": "/TradeSmart/static/js/main.e87f5e22.js",
     "static/media/homeinfo1.jpg": "/TradeSmart/static/media/homeinfo1.dbc0e9c86c62f3e83029.jpg",
     "static/media/logsign.jpg": "/TradeSmart/static/media/logsign.a92cb1d84c8ab5d2ce0a.jpg",
@@ -8,11 +8,11 @@
     "service-worker.js": "/TradeSmart/service-worker.js",
     "static/media/logo.png": "/TradeSmart/static/media/logo.2ec4fbacfeb1194d87c3.png",
     "index.html": "/TradeSmart/index.html",
-    "main.e4c0d1fe.css.map": "/TradeSmart/static/css/main.e4c0d1fe.css.map",
+    "main.6e552003.css.map": "/TradeSmart/static/css/main.6e552003.css.map",
     "main.e87f5e22.js.map": "/TradeSmart/static/js/main.e87f5e22.js.map"
   },
   "entrypoints": [
-    "static/css/main.e4c0d1fe.css",
+    "static/css/main.6e552003.css",
     "static/js/main.e87f5e22.js"
   ]
 }
