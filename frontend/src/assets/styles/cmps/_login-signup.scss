@@ -153,3 +153,29 @@
       }
    }
 }
+
+@media (max-width: 700px) {
+   .login-page {
+      display: flex;
+      flex-direction: column;
+      height: auto;
+      width: auto;
+      gap: 4rem;
+
+      .login-image-container {
+         width: auto;
+         height: auto;
+      }
+      .login-inner-container{
+         margin-block-start: 7rem;
+      }
+   }
+}
+
+@media (max-width: 500px) {
+   .inner-image-login-container {
+      > * {
+         font-size: 1.8rem !important;
+      }
+   }
+}
