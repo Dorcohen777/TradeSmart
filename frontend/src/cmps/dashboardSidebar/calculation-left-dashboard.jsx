@@ -94,28 +94,35 @@ export function SideBarLeft({ addTrade, strategyWinRate }) {
                </button>
             </div>
             <div className='strategy-container input-container-style-dash'>
-               <h2 className='underline-style-white'>
+               <h2 className='strategy-main-title underline-style-white'>
                   Strategy Data & Insight
                </h2>
                <div className='strategy-data-container'>
-                  <h4>Strategy WinRate</h4>
+                  <h4 className='strategy-data-subtitle-title'>Strategy WinRate</h4>
                   {strategyWinRate &&
                      strategyWinRate.map((str) => {
                         if (str.strategyType !== 'null') {
                            return (
-                              <p key={str.strategyType} className='strategy-title'>
-                                 {str.strategyType}
-                                 <div
-                                    style={{
-                                       width: `${str.winRate}%`, 
-                                       height: '10px', 
-                                       backgroundColor: '#00B399',
-                                       borderRadius: '0.2rem',
-                                       transition: '1s',
-                                    }}
-                                 ></div>
-                                 {str.winRate}%
-                              </p>
+                              <div className='strategy-inner-data-container'>
+                                 <p
+                                    key={str.strategyType}
+                                    className='strategy-title'
+                                 >
+                                    {str.strategyType}
+                                 </p>
+                                 <div className='strategy-bar-container'>
+                                    <div
+                                       style={{
+                                          width: `${str.winRate}%`,
+                                          height: '10px',
+                                          backgroundColor: '#00B399',
+                                          borderRadius: '0.2rem',
+                                          transition: '1s',
+                                       }}
+                                    ></div>
+                                    <p>{str.winRate}%</p>
+                                 </div>
+                              </div>
                            )
                         } else {
                            return null

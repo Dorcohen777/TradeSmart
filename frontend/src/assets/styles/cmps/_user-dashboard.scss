@@ -161,26 +161,43 @@
             gap: 0.4rem;
          }
 
-         .strategy-container{
-
+         .strategy-container {
             > * {
                margin: 0.2rem 0;
             }
 
-            .strategy-data-container{
+            .strategy-main-title {
+               margin-block-end: 1rem;
+            }
+
+            .strategy-data-container {
                background-color: #3f4d73;
                padding: 0.4rem;
                border-radius: 0.4rem;
-
-               .strategy-title{
+               
+               .strategy-data-subtitle-title {
+                  margin-block-end: 0.4rem;
+               }
+               .strategy-title {
                   display: flex;
                   align-items: center;
                   gap: 0.3rem;
                }
+
+               .strategy-inner-data-container {
+                  border: 1px solid $clr1;
+                  padding: 0.4rem;
+                  border-radius: 0.4rem;
+                  margin-block-end: 0.4rem;
+               }
+
+               .strategy-bar-container {
+                  display: flex;
+                  align-items: center;
+                  gap: 0.2rem;
+               }
             }
          }
-
-         
       }
 
       .transaction-new-trade-container {
@@ -226,6 +243,6 @@
                margin-block-start: 0.4rem;
             }
          }
-      }  
+      }
    }
 }
