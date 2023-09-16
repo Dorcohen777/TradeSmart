@@ -42,7 +42,7 @@ export function TableData({onRemoveTrade, userTrades}) {
                              <td>{trade.amount}</td>
                              <td>{trade.entryPrice}</td>
                              <td>{trade.exitPrice}</td>
-                             <td>{trade.percentage}</td>
+                             <td>{trade.percentage + '%'} </td>
                              <td className='td-side'>long</td>
                              <td
                                 className={`td-pl ${

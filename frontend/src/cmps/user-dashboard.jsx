@@ -20,6 +20,7 @@ export function UserDashboard() {
    const user = useSelector((storeState) => storeState.userModule.user)
    const [accountPl, setUserPl] = useState(0)
    const [accountWinRate, setAccountWinRate] = useState(0)
+   const [tradesAveragePercentage, setTradesAveragePercentage] = useState(0)
    const [strategyWinRate, setStrategyWinRate] = useState(null)
    const [userTrades, setUserTrades] = useState([])
 
@@ -47,7 +48,10 @@ export function UserDashboard() {
       // calculate each strategy win rate
       const strategyWinRateResult = tradeService.calcStrategyWinRate(userTrades)
       setStrategyWinRate(strategyWinRateResult)
-      
+
+      // calculate all average trades percentage change
+      const tradesPercentageChange = tradeService.accountTradesAveragePercentage(userTrades)
+      setTradesAveragePercentage(tradesPercentageChange)
    }, [userTrades])
 
    async function onRemoveTrade(tradeId) {
@@ -57,9 +61,8 @@ export function UserDashboard() {
    return (
       <>
          <section className='dashboard-main-container'>
-
-            <div >
-            <UserboardNavBar/>
+            <div>
+               <UserboardNavBar />
             </div>
 
             <div className='transaction-data-container'>
@@ -76,13 +79,17 @@ export function UserDashboard() {
                      <h3>Win Rate: {accountWinRate}%</h3>
                   </div>
 
+                  <div className='dash-acc-data-container'>
+                     <h3>Average trades percentage change: {tradesAveragePercentage.toFixed(2) + '%'}</h3>
+                  </div>
+
                   <Outlet />
                </div>
 
                <h2 className='table-title'>Transactions Panel</h2>
 
                <HeaderDashboard loadTrades={loadTrades} />
-               
+
                <TableData
                   onRemoveTrade={onRemoveTrade}
                   userTrades={userTrades}
@@ -94,7 +101,10 @@ export function UserDashboard() {
             </div>
 
             <div className='new-trade-main-container scroll-bar-style-2'>
-               <SideBarLeft addTrade={addTrade} strategyWinRate={strategyWinRate} />
+               <SideBarLeft
+                  addTrade={addTrade}
+                  strategyWinRate={strategyWinRate}
+               />
             </div>
          </section>
       </>

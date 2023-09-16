@@ -13,6 +13,7 @@ export const tradeService = {
    getTrades,
    calculatePL,
    calculatePercentageChange,
+   accountTradesAveragePercentage,
    getEmptyTrade,
    calculateRiskAmount,
    calculatePercentageAndPrice,
@@ -103,7 +104,7 @@ function calculatePercentageChange(entryPrice, exitPrice) {
    const percentageChange = ((exitPrice - entryPrice) / entryPrice) * 100
    const fixedPercentageChange = Math.round(percentageChange * 100) / 100
 
-   return fixedPercentageChange + '%'
+   return fixedPercentageChange
 }
 
 function calculateRiskAmount(accountValue, riskPercentage) {
@@ -231,6 +232,18 @@ function calcStrategyWinRate(userTrades) {
       winRateResults.push(resultObj)
    }
    return winRateResults
+}
+
+function accountTradesAveragePercentage(userTrades) {
+   const tradesAveragePerChange = userTrades.reduce((acc, val) => {
+      console.log('acc', acc)
+      console.log('val', val.percentage)
+
+      return acc + val.percentage
+   }, 0)
+
+   const calcAverage = tradesAveragePerChange / userTrades.length
+   return calcAverage
 }
 
 // home page functions
