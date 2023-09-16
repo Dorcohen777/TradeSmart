@@ -12,6 +12,7 @@ export const tradeService = {
    remove,
    getTrades,
    calculatePL,
+   calculatePercentageChange,
    getEmptyTrade,
    calculateRiskAmount,
    calculatePercentageAndPrice,
@@ -93,6 +94,16 @@ function calculatePL(symbol, sharesAmount, entryPrice, exitPrice) {
    const profitLoss = totalRevenue - totalCost
    const fixedProfitLoss = Math.round(profitLoss * 100) / 100
    return fixedProfitLoss
+}
+
+// calculate percentage change
+function calculatePercentageChange(entryPrice, exitPrice) {
+   if (!exitPrice) return null
+
+   const percentageChange = ((exitPrice - entryPrice) / entryPrice) * 100
+   const fixedPercentageChange = Math.round(percentageChange * 100) / 100
+
+   return fixedPercentageChange + '%'
 }
 
 function calculateRiskAmount(accountValue, riskPercentage) {

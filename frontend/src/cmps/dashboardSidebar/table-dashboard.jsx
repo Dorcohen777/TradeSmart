@@ -13,6 +13,7 @@ export function TableData({onRemoveTrade, userTrades}) {
                   <th>Shares</th>
                   <th>Entry price</th>
                   <th>Exit price</th>
+                  <th>Percentage</th>
                   <th>Side</th>
                   <th>Return $</th>
                   <th>Strategy type</th>
@@ -41,6 +42,7 @@ export function TableData({onRemoveTrade, userTrades}) {
                              <td>{trade.amount}</td>
                              <td>{trade.entryPrice}</td>
                              <td>{trade.exitPrice}</td>
+                             <td>{trade.percentage}</td>
                              <td className='td-side'>long</td>
                              <td
                                 className={`td-pl ${

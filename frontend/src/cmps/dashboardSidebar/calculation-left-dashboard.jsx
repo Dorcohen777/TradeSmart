@@ -31,10 +31,14 @@ export function SideBarLeft({ addTrade, strategyWinRate }) {
          newTrade.entryPrice,
          newTrade.exitPrice
       )
+      newTrade.percentage = tradeService.calculatePercentageChange(
+         newTrade.entryPrice,
+         newTrade.exitPrice
+      )
       newTrade.timestamp = Date.now()
       addTrade(newTrade)
    }
-   console.log('from left-calculation', strategyWinRate)
+
    return (
       <section>
          <div className='transaction-first-container'>
@@ -98,7 +102,9 @@ export function SideBarLeft({ addTrade, strategyWinRate }) {
                   Strategy Data & Insight
                </h2>
                <div className='strategy-data-container'>
-                  <h4 className='strategy-data-subtitle-title'>Strategy WinRate</h4>
+                  <h4 className='strategy-data-subtitle-title'>
+                     Strategy WinRate
+                  </h4>
                   {strategyWinRate &&
                      strategyWinRate.map((str) => {
                         if (str.strategyType !== 'null') {
