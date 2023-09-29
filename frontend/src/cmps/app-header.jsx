@@ -94,6 +94,9 @@ export function AppHeader() {
                               <li>
                                  <Link to={'/about-us'}>About us</Link>
                               </li>
+                              <li>
+                                 <Link to={'/market-timing'}>Market timing</Link>
+                              </li>
                               {user && (
                                  <li>
                                     <Link to={'/user-dashboard'}>
