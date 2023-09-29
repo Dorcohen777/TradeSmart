@@ -6,6 +6,7 @@ export const utilService = {
    getCurrentDay,
    loadFromStorage,
    getDate,
+   getCurrentDateForTiming,
 }
 
 function makeId(length = 6) {
@@ -54,12 +55,24 @@ function getCurrentDay() {
 
 function getDate() {
    const currentDate = new Date()
-   const year = currentDate.getFullYear() 
-   const month = currentDate.getMonth() + 1 
-   const day = currentDate.getDate() 
-   const hours = currentDate.getHours() 
+   const year = currentDate.getFullYear()
+   const month = currentDate.getMonth() + 1
+   const day = currentDate.getDate()
+   const hours = currentDate.getHours()
    const currDate = day + '/' + month + '/' + year
    return currDate
+}
+
+function getCurrentDateForTiming() {
+   const currentDate = new Date()
+
+   const year = currentDate.getFullYear()
+   const month = String(currentDate.getMonth() + 1).padStart(2, '0') // Month is 0-based, so we add 1
+   const day = String(currentDate.getDate()).padStart(2, '0')
+
+   const formattedDate = `${year}-${month}-${day - 1}`
+
+   return formattedDate
 }
 
 

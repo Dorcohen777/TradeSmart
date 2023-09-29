@@ -1,14 +1,13 @@
-const API_KEY_POLY = 'gfdWnHyxY9wvUDUSUcgKUKWhPpRvBD02'
+const axios = require('axios')
 
-async function marketTiming() {
-   try {
-   } catch {}
+export const marketTiming = {
+   fetchVIXData,
 }
 
-async function fetchVIXData() {
+async function fetchVIXData(date) {
+   console.log('data', date)
    const apiKey = 'gfdWnHyxY9wvUDUSUcgKUKWhPpRvBD02'
-   const endpoint =
-      'https://api.polygon.io/v1/open-close/AAPL/2023-01-09?adjusted=true&apiKey=gfdWnHyxY9wvUDUSUcgKUKWhPpRvBD02'
+   const endpoint = `https://api.polygon.io/v1/open-close/VIX9D/${date}?adjusted=true&apiKey=${apiKey}`
 
    try {
       const response = await axios.get(endpoint, {
@@ -29,6 +28,3 @@ async function fetchVIXData() {
       console.error('Error fetching VIX data:', error)
    }
 }
-
-// Call the async function
-fetchVIXData()
