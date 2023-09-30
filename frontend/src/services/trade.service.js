@@ -3,15 +3,31 @@ import { httpService } from './http.service.js'
 import { utilService } from './util.service.js'
 import { userService } from './user.service.js'
 
-const STORAGE_KEY = 'trade'
+const STORAGE_KEY = 'tradesDB'
 
-export const TradeService = {
+export const tradeService = {
    query,
    getById,
    save,
    remove,
+   getTrades,
+   saveNewStrategy,
+   filterStrategyByUser,
+   calculatePL,
+   calculatePercentageChange,
+   calculateRiskAmount,
+   calculatePercentageAndPrice,
+   emptyTrade,
+   newRiskManagement,
+   newCalcExitPoint,
+   calcStrategyWinRate,
+   calculateAccountPl,
+   calculateWinRate,
+   createDemoUser,
+   accountTradesAveragePercentage,
 }
-window.cs = TradeService
+
+window.cs = tradeService
 
 async function query(filterBy = { symbol: '' }) {
    return httpService.get(STORAGE_KEY, filterBy)
