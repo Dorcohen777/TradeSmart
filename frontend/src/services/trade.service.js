@@ -275,14 +275,7 @@ function createDemoUser() {
 
 // ---------------------------------------------------------------- //
 
-// async function addCarMsg(carId, txt) {
-//     const savedMsg = await httpService.post(`car/${carId}/msg`, {txt})
+// async function addTradeMsg(carId, txt) {
+//     const savedMsg = await httpService.post(`trade/${tradeId}/msg`, {txt})
 //     return savedMsg
-// }
-
-// function getEmptyCar() {
-//     return {
-//         vendor: 'Susita-' + (Date.now() % 1000),
-//         price: utilService.getRandomIntInclusive(1000, 9000),
-//     }
 // }
