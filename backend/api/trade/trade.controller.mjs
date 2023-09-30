@@ -1,4 +1,4 @@
-import {carService} from './car.service.mjs'
+import {carService} from './trade.service.mjs'
 import {logger} from '../../services/logger.service.mjs'
 
 export async function getCars(req, res) {

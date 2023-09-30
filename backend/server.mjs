@@ -29,7 +29,7 @@ if (process.env.NODE_ENV === 'production') {
 import { authRoutes } from './api/auth/auth.routes.mjs'
 import { userRoutes } from './api/user/user.routes.mjs'
 import { reviewRoutes } from './api/review/review.routes.mjs'
-import { carRoutes } from './api/car/car.routes.mjs'
+import { tradeRoutes } from './api/trade/trade.routes.mjs'
 import { setupSocketAPI } from './services/socket.service.mjs'
 
 // routes
@@ -39,7 +39,7 @@ app.all('*', setupAsyncLocalStorage)
 app.use('/api/auth', authRoutes)
 app.use('/api/user', userRoutes)
 app.use('/api/review', reviewRoutes)
-app.use('/api/car', carRoutes)
+app.use('/api/trade', tradeRoutes)
 setupSocketAPI(server)
 
 // Make every server-side-route to match the index.html
