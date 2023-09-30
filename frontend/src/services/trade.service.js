@@ -20,7 +20,7 @@ async function query(filterBy = { symbol: '' }) {
 
 function getById(tradeId) {
    return httpService.get(`trade/${tradeId}`)
-   // TODO backend should return trade by his Id 
+   // TODO backend should return trade by his Id
 }
 
 async function remove(tradeId) {
@@ -33,15 +33,19 @@ async function save(trade) {
    if (trade._id) {
       savedTrade = await httpService.put(`trade/${trade._id}`, trade) // if trade has Id so update
    } else {
-      savedTrade = await httpService.post('trade', trade) // if trade does not has id create add new trade 
+      savedTrade = await httpService.post('trade', trade) // if trade does not has id create add new trade
    }
    return savedTrade
 }
 
+// send request to get all strategies
+async function getStrategies() {
+   return httpService.get('/allStrategies')
+}
 
 
-// ## Functions that not require http request ## //
 
+// ## Functions - section 2  ## //
 
 // getting all the trades by the specific user
 async function getTrades(userId, storeTrades) {
@@ -53,17 +57,22 @@ async function getTrades(userId, storeTrades) {
    return filterTradesByUser
 }
 
+// sending request for adding new strategy
+async function saveNewStrategy(newStrategy) {
+   newStrategy.owner = userService.getLoggedinUser()
+   const saveStrategy = await httpService.post('/newStrategy', newStrategy)
+   return saveStrategy
+}
+
+// filter strategy by login user
 async function filterStrategyByUser(userId) {
-   const loadStrategy = utilService.loadFromStorage(STRATEGY_KEY)
-   const filterStrategy = loadStrategy.filter((str) => str.owner._id === userId)
+   const allStrategies = await getStrategies()
+   const filterStrategy = allStrategies.filter(
+      (str) => str.owner._id === userId
+   )
    return filterStrategy
 }
 
-async function saveNewStrategy(newStrategy) {
-   newStrategy.owner = userService.getLoggedinUser()
-   const saveStrategy = await storageService.post(STRATEGY_KEY, newStrategy)
-   return saveStrategy
-}
 
 function calculatePL(symbol, sharesAmount, entryPrice, exitPrice) {
    if (!exitPrice) return null
@@ -84,6 +93,7 @@ function calculatePercentageChange(entryPrice, exitPrice) {
    return fixedPercentageChange
 }
 
+// calculate risk percentage from dollar value
 function calculateRiskAmount(accountValue, riskPercentage) {
    console.log('accountValue', accountValue)
    console.log('riskPercentage', riskPercentage)
@@ -91,6 +101,7 @@ function calculateRiskAmount(accountValue, riskPercentage) {
    return riskAmount
 }
 
+// calculate stop loss and percentage change
 function calculatePercentageAndPrice(riskAmount, sharesAmount, sharesPrice) {
    console.log('riskAmount', riskAmount)
    console.log('sharesAmount', sharesAmount)
@@ -168,6 +179,7 @@ function calculateWinRate(userTrades) {
    const winRate = (winningTrades.length / totalTrades) * 100
    return winRate.toFixed(2)
 }
+
 // calculate strategy win rate
 function calcStrategyWinRate(userTrades) {
    const countStrategy = userTrades.reduce((acc, trade) => {
@@ -237,49 +249,7 @@ function createDemoUser() {
    return demoUser
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// ---------------------------------------------------------------- // 
+// ---------------------------------------------------------------- //
 
 // async function addCarMsg(carId, txt) {
 //     const savedMsg = await httpService.post(`car/${carId}/msg`, {txt})
