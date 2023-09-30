@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react'
-import { tradeService } from '../../services/trade.service.local'
+import {  useState } from 'react'
+import { tradeService } from '../../services/trade.service'
 import { utilService } from '../../services/util.service'
 import { useSelector } from 'react-redux'
 

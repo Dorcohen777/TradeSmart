@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 
 // imports
-import { tradeService } from '../services/trade.service.local'
+import { tradeService } from '../services/trade.service'
 import { updateTrade } from '../store/trade.actions'
 import { userService } from '../services/user.service'
 

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 
 // services / utils
-import { tradeService } from '../services/trade.service.local'
+import { tradeService } from '../services/trade.service'
 import { addTrade, loadTrades, removeTrade } from '../store/trade.actions'
 import { Link, Outlet } from 'react-router-dom'
 

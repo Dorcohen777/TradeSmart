@@ -1,4 +1,4 @@
-import { tradeService } from '../services/trade.service.local.js'
+import { tradeService } from '../services/trade.service'
 import { userService } from '../services/user.service.js'
 import { store } from './store.js'
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'

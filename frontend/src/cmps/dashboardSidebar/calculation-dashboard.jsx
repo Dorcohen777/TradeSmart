@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { tradeService } from "../../services/trade.service.local"
+import { tradeService } from "../../services/trade.service"
 
 export function CalcContainer(){
    const [calcExitPoint, setCalcExitPoint] = useState(tradeService.newCalcExitPoint())

@@ -25,11 +25,13 @@ export const tradeService = {
    calculateWinRate,
    createDemoUser,
    accountTradesAveragePercentage,
+   getEmptyTrade,
 }
 
 window.cs = tradeService
 
 async function query(filterBy = { symbol: '' }) {
+   console.log('trying to load trades from http trade service')
    return httpService.get(STORAGE_KEY, filterBy)
    // TODO filter should be handle in the backend (node server)
 }
@@ -142,6 +144,12 @@ function calculatePercentageAndPrice(riskAmount, sharesAmount, sharesPrice) {
       newPricePerShare: newPricePerShare.toFixed(2),
    }
 }
+
+function getEmptyTrade() {
+   const filterBy = { symbol: '' }
+   return filterBy
+}
+
 
 function emptyTrade() {
    const newTrade = {

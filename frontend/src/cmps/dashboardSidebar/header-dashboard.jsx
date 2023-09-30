@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { tradeService } from '../../services/trade.service.local'
+import { tradeService } from '../../services/trade.service'
 import { Link } from 'react-router-dom'
 
 export function HeaderDashboard({ loadTrades }) {
