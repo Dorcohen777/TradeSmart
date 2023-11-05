@@ -51,7 +51,8 @@ async function save(trade) {
    if (trade._id) {
       savedTrade = await httpService.put(`trade/${trade._id}`, trade) // if trade has Id so update
    } else {
-      savedTrade = await httpService.post('trade', trade) // if trade does not has id create add new trade
+      console.log('sending request to backend', trade)
+      savedTrade = await httpService.post('/trade', trade) // if trade does not has id create add new trade
    }
    return savedTrade
 }

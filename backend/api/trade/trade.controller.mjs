@@ -1,98 +1,98 @@
-import {carService} from './trade.service.mjs'
+import {tradeService} from './trade.service.mjs'
 import {logger} from '../../services/logger.service.mjs'
 
-export async function getCars(req, res) {
+export async function getTrades(req, res) {
   try {
-    logger.debug('Getting Cars:', req.query)
+    logger.debug('Getting Trades:', req.query)
     const filterBy = {
       txt: req.query.txt || '',
       pageIdx: req.query.pageIdx
     }
-    const cars = await carService.query(filterBy)
-    res.json(cars)
+    const trades = await tradeService.query(filterBy)
+    res.json(trades)
   } catch (err) {
-    logger.error('Failed to get cars', err)
-    res.status(400).send({ err: 'Failed to get cars' })
+    logger.error('Failed to get trades', err)
+    res.status(400).send({ err: 'Failed to get trades' })
   }
 }
 
-export async function getCarById(req, res) {
+export async function getTradeById(req, res) {
   try {
-    const carId = req.params.id
-    const car = await carService.getById(carId)
-    res.json(car)
+    const tradeId = req.params.id
+    const trade = await tradeService.getById(tradeId)
+    res.json(trade)
   } catch (err) {
-    logger.error('Failed to get car', err)
-    res.status(400).send({ err: 'Failed to get car' })
+    logger.error('Failed to get trade', err)
+    res.status(400).send({ err: 'Failed to get trade' })
   }
 }
 
-export async function addCar(req, res) {
+export async function addTrade(req, res) {
   const {loggedinUser} = req
-
+  console.log('from front', req.body)
   try {
-    const car = req.body
-    car.owner = loggedinUser
-    const addedCar = await carService.add(car)
-    res.json(addedCar)
+    const trade = req.body
+    trade.owner = loggedinUser
+    const addedTrade = await tradeService.add(trade)
+    res.json(addedTrade)
   } catch (err) {
-    logger.error('Failed to add car', err)
-    res.status(400).send({ err: 'Failed to add car' })
+    logger.error('Failed to add trade', err)
+    res.status(400).send({ err: 'Failed to add trade' })
   }
 }
 
 
-export async function updateCar(req, res) {
+export async function updateTrade(req, res) {
   try {
-    const car = req.body
-    const updatedCar = await carService.update(car)
-    res.json(updatedCar)
+    const trade = req.body
+    const updatedTrade = await tradeService.update(trade)
+    res.json(updatedTrade)
   } catch (err) {
-    logger.error('Failed to update car', err)
-    res.status(400).send({ err: 'Failed to update car' })
+    logger.error('Failed to update trade', err)
+    res.status(400).send({ err: 'Failed to update trade' })
 
   }
 }
 
-export async function removeCar(req, res) {
+export async function removeTrade(req, res) {
   try {
-    const carId = req.params.id
-    const removedId = await carService.remove(carId)
+    const tradeId = req.params.id
+    const removedId = await tradeService.remove(tradeId)
     res.send(removedId)
   } catch (err) {
-    logger.error('Failed to remove car', err)
-    res.status(400).send({ err: 'Failed to remove car' })
+    logger.error('Failed to remove trade', err)
+    res.status(400).send({ err: 'Failed to remove trade' })
   }
 }
 
-export async function addCarMsg(req, res) {
+export async function addTradeMsg(req, res) {
   const {loggedinUser} = req
   try {
-    const carId = req.params.id
+    const tradeId = req.params.id
     const msg = {
       txt: req.body.txt,
       by: loggedinUser
     }
-    const savedMsg = await carService.addCarMsg(carId, msg)
+    const savedMsg = await tradeService.addTradeMsg(tradeId, msg)
     res.json(savedMsg)
   } catch (err) {
-    logger.error('Failed to update car', err)
-    res.status(400).send({ err: 'Failed to update car' })
+    logger.error('Failed to update trade', err)
+    res.status(400).send({ err: 'Failed to update trade' })
 
   }
 }
 
-export async function removeCarMsg(req, res) {
+export async function removeTradeMsg(req, res) {
   const {loggedinUser} = req
   try {
-    const carId = req.params.id
+    const tradeId = req.params.id
     const {msgId} = req.params
 
-    const removedId = await carService.removeCarMsg(carId, msgId)
+    const removedId = await tradeService.removeTradeMsg(tradeId, msgId)
     res.send(removedId)
   } catch (err) {
-    logger.error('Failed to remove car msg', err)
-    res.status(400).send({ err: 'Failed to remove car msg' })
+    logger.error('Failed to remove trade msg', err)
+    res.status(400).send({ err: 'Failed to remove trade msg' })
 
   }
 }

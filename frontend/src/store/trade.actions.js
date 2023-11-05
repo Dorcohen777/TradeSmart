@@ -65,7 +65,7 @@ export async function addTrade(trade) {
       const savedTrade = await tradeService.save(trade)
       console.log('Added Trade', savedTrade)
       store.dispatch(getActionAddTrade(savedTrade))
-      return savedTrade
+      return savedTrade // maybe no need for it - consider removing later
    } catch (err) {
       console.log('Cannot add trade', err)
       throw err

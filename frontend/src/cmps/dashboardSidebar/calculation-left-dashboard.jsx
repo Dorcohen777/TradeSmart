@@ -22,8 +22,7 @@ export function SideBarLeft({ addTrade, strategyWinRate }) {
          [name]: value,
       }))
    }
-
-   function onTransactionClick(newTrade) {
+   function onAddingNewTrade(newTrade) {
       newTrade.day = utilService.getDate()
       newTrade.pl = tradeService.calculatePL(
          newTrade.symbol,
@@ -77,7 +76,7 @@ export function SideBarLeft({ addTrade, strategyWinRate }) {
                />
                <button
                   className='btn-style-3'
-                  onClick={() => onTransactionClick(newTrade)}
+                  onClick={() => onAddingNewTrade(newTrade)}
                >
                   Add new trade
                </button>

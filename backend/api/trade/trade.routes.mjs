@@ -1,21 +1,21 @@
 import express from 'express'
 import { requireAuth } from '../../middlewares/requireAuth.middleware.mjs'
 import { log } from '../../middlewares/logger.middleware.mjs'
-import { getCars, getCarById, addCar, updateCar, removeCar, addCarMsg, removeCarMsg } from './trade.controller.mjs'
+import { getTrades, getTradeById, addTrade, updateTrade, removeTrade, addTradeMsg, removeTradeMsg } from './trade.controller.mjs'
 
 const router = express.Router()
 
 // We can add a middleware for the entire router:
 // router.use(requireAuth)
 
-router.get('/', log, getCars)
-router.get('/:id', getCarById)
-router.post('/', requireAuth, addCar)
-router.put('/:id', requireAuth, updateCar)
-router.delete('/:id', requireAuth, removeCar)
-// router.delete('/:id', requireAuth, requireAdmin, removeCar)
+router.get('/', log, getTrades)
+router.get('/:id', getTradeById)
+router.post('/trade',requireAuth, addTrade) // add new trade
+router.put('/:id', requireAuth, updateTrade) // update existing trade
+router.delete('/:id', requireAuth, removeTrade)
+// router.delete('/:id', requireAuth, requireAdmin, removeTrade)
 
-router.post('/:id/msg', requireAuth, addCarMsg)
-router.delete('/:id/msg/:msgId', requireAuth, removeCarMsg)
+router.post('/:id/msg', requireAuth, addTradeMsg)
+router.delete('/:id/msg/:msgId', requireAuth, removeTradeMsg)
 
 export const tradeRoutes = router
