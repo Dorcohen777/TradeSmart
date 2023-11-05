@@ -63,6 +63,16 @@ async function login(userCred) {
    }
 }
 
+function saveLocalUser(user) {
+   user = {
+      _id: user._id,
+      fullname: user.fullname,
+      imgUrl: user.imgUrl,
+   }
+   sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user))
+   return user
+}
+
 async function signup(userCred) {
    if (!userCred.imgUrl)
       userCred.imgUrl =
@@ -73,19 +83,10 @@ async function signup(userCred) {
 }
 
 async function logout() {
-   // sessionStorage.removeItem(STORAGE_KEY_LOGGEDIN_USER) ## This is for local storage
+   sessionStorage.removeItem(STORAGE_KEY_LOGGEDIN_USER) //## This is for local storage
    return await httpService.post('auth/logout')
 }
 
-function saveLocalUser(user) {
-   user = {
-      _id: user._id,
-      fullname: user.fullname,
-      imgUrl: user.imgUrl,
-   }
-   sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user))
-   return user
-}
 
 function getLoggedinUser() {
    return JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER))

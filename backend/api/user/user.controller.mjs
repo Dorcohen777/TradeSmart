@@ -58,3 +58,4 @@ export async function addUser(req, res) {
       res.status(400).send({ err: 'Failed to add user' })
    }
 }
+
