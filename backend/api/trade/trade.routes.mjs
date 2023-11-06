@@ -10,7 +10,7 @@ const router = express.Router()
 
 router.get('/', log, getTrades)
 router.get('/:id', getTradeById)
-router.post('/trade',requireAuth, addTrade) // add new trade
+router.post('/',requireAuth, addTrade) // add new trade
 router.put('/:id', requireAuth, updateTrade) // update existing trade
 router.delete('/:id', requireAuth, removeTrade)
 // router.delete('/:id', requireAuth, requireAdmin, removeTrade)

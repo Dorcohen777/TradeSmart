@@ -4,6 +4,7 @@ import { utilService } from './util.service.js'
 import { userService } from './user.service.js'
 
 const STORAGE_KEY = 'trade'
+const BASE_URL = 'trade/'
 
 export const tradeService = {
    query,
@@ -49,10 +50,10 @@ async function remove(tradeId) {
 async function save(trade) {
    var savedTrade
    if (trade._id) {
-      savedTrade = await httpService.put(`trade/${trade._id}`, trade) // if trade has Id so update
+      savedTrade = await httpService.put(BASE_URL + trade._id, trade) // if trade has Id so update
    } else {
       console.log('sending request to backend', trade)
-      savedTrade = await httpService.post('/trade', trade) // if trade does not has id create add new trade
+      savedTrade = await httpService.post(BASE_URL, trade) // if trade does not has id create add new trade
    }
    return savedTrade
 }
