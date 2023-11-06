@@ -5,8 +5,7 @@ export async function getTrades(req, res) {
   try {
     logger.debug('Getting Trades:', req.query)
     const filterBy = {
-      txt: req.query.txt || '',
-      pageIdx: req.query.pageIdx
+      symbol: req.query.symbol || '',
     }
     const trades = await tradeService.query(filterBy)
     res.json(trades)

@@ -6,10 +6,10 @@ const { ObjectId } = mongodb
 
 const PAGE_SIZE = 3
 
-async function query(filterBy = { txt: '' }) {
+async function query(filterBy = { symbol: '' }) {
    try {
       const criteria = {
-         vendor: { $regex: filterBy.txt, $options: 'i' },
+         symbol: { $regex: filterBy.symbol, $options: 'i' },
       }
       const collection = await dbService.getCollection('trade')
       var tradeCursor = await collection.find(criteria)

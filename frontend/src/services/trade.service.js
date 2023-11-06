@@ -32,9 +32,9 @@ export const tradeService = {
 window.cs = tradeService
 
 async function query(filterBy = { symbol: '' }) {
-   console.log('trying to load trades from http trade service')
-   return httpService.get(STORAGE_KEY, filterBy)
-   // TODO filter should be handle in the backend (node server)
+   console.log('loading all trades from backend')
+   return httpService.get(BASE_URL, filterBy)
+   
 }
 
 function getById(tradeId) {
@@ -43,8 +43,8 @@ function getById(tradeId) {
 }
 
 async function remove(tradeId) {
-   return httpService.delete(`trade/${tradeId}`)
-   // TODO backend should remove trade from database
+   // return httpService.delete(`trade/${tradeId}`)
+   return httpService.delete(BASE_URL + tradeId)
 }
 
 async function save(trade) {
