@@ -3,7 +3,6 @@ import { httpService } from './http.service.js'
 import { utilService } from './util.service.js'
 import { userService } from './user.service.js'
 
-const STORAGE_KEY = 'trade'
 const BASE_URL = 'trade/'
 
 export const tradeService = {
@@ -34,16 +33,13 @@ window.cs = tradeService
 async function query(filterBy = { symbol: '' }) {
    console.log('loading all trades from backend')
    return httpService.get(BASE_URL, filterBy)
-   
 }
 
 function getById(tradeId) {
-   return httpService.get(`trade/${tradeId}`)
-   // TODO backend should return trade by his Id
+   return httpService.get(BASE_URL + tradeId)
 }
 
 async function remove(tradeId) {
-   // return httpService.delete(`trade/${tradeId}`)
    return httpService.delete(BASE_URL + tradeId)
 }
 
@@ -62,8 +58,6 @@ async function save(trade) {
 async function getStrategies() {
    return httpService.get('/allStrategies')
 }
-
-
 
 // ## Functions - section 2  ## //
 
@@ -92,7 +86,6 @@ async function filterStrategyByUser(userId) {
    )
    return filterStrategy
 }
-
 
 function calculatePL(symbol, sharesAmount, entryPrice, exitPrice) {
    if (!exitPrice) return null
@@ -151,7 +144,6 @@ function getEmptyTrade() {
    const filterBy = { symbol: '' }
    return filterBy
 }
-
 
 function emptyTrade() {
    const newTrade = {

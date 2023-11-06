@@ -12,8 +12,7 @@ export function MarketTimeing() {
       <section className='market-timing-container'>
          <h1>Market timing</h1>
          <h3>
-            the market timing bird will give you alerts about the market
-            condition
+            coming soon...
          </h3>
       </section>
    )
