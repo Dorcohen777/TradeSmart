@@ -28,7 +28,6 @@ export async function getTradeById(req, res) {
 
 export async function addTrade(req, res) {
   const {loggedinUser} = req
-  console.log('from front', req.body)
   try {
     const trade = req.body
     trade.owner = loggedinUser

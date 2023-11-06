@@ -65,6 +65,7 @@ async function update(trade) {
          amount: trade.amount,
          entryPrice: trade.entryPrice,
          exitPrice: trade.exitPrice,
+         strategyType: trade.strategyType,
       }
 
       const collection = await dbService.getCollection('trade')

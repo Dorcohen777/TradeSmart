@@ -54,11 +54,6 @@ async function save(trade) {
    return savedTrade
 }
 
-// send request to get all strategies
-async function getStrategies() {
-   return httpService.get('/allStrategies')
-}
-
 // ## Functions - section 2  ## //
 
 // getting all the trades by the specific user
@@ -71,10 +66,15 @@ async function getTrades(userId, storeTrades) {
    return filterTradesByUser
 }
 
-// sending request for adding new strategy
+// send request to get all strategies
+async function getStrategies() {
+   return httpService.get('strategy/')
+}
+
+// sending request to add new strategy
 async function saveNewStrategy(newStrategy) {
    newStrategy.owner = userService.getLoggedinUser()
-   const saveStrategy = await httpService.post('/newStrategy', newStrategy)
+   const saveStrategy = await httpService.post('strategy/', newStrategy)
    return saveStrategy
 }
 
