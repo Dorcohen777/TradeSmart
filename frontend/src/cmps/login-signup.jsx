@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react'
 import { userService } from '../services/user.service'
 import { login, signup, logout } from '../store/user.actions'
 import { ImgUploader } from '../cmps/img-uploader'
-import { showErrorMsg } from '../services/event-bus.service'
-
+import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service'
+import { UserMsg } from './user-msg'
 // img
 import loginSignupImg from '../assets/img/logsign.jpg'
 import { useNavigate } from 'react-router-dom'
@@ -54,9 +54,10 @@ export function LoginSignup() {
          await login(credentials)
          getCurrUser()
          clearState()
+         showSuccessMsg('Login successfully')
       } catch (err) {
          console.log('Failed to login check username and password', err)
-         showErrorMsg('Login failed. Please check your username and password.') // Show an error message
+         showErrorMsg('Login failed. Please check your username and password.') 
       }
    }
 
@@ -91,10 +92,9 @@ export function LoginSignup() {
    function onUploaded(imgUrl) {
       setCredentials({ ...credentials, imgUrl })
    }
-   
-
    return (
       <div className='login-page'>
+         <UserMsg />
          <div className='login-inner-container'>
             <div className='login-info-container'>
                <p>

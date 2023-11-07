@@ -1,5 +1,6 @@
 import infoOne from '../assets/img/homePage-info/homeinfo1.jpg'
 
+
 export function HomeInfo() {
    return (
       <section className='info-main-container main-layout'>
