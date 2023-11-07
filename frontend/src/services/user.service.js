@@ -53,14 +53,20 @@ async function login(userCred) {
          user.password === userCred.password
     ) ## This is for local storage
    */
-
-   const user = await httpService.post('auth/login', userCred)
-   if (user) {
-      console.log('successful login')
-      return saveLocalUser(user)
-   } else {
-      return console.log('login failed')
+   try {
+      const user = await httpService.post('auth/login', userCred)
+         return saveLocalUser(user)
+   } catch (err) {
+      return console.log('Failed to login - check username or password')
    }
+
+   // const user = await httpService.post('auth/login', userCred)
+   // if (user) {
+   //    console.log('successful login')
+   //    return saveLocalUser(user)
+   // } else {
+   //    return console.log('login failed')
+   // }
 }
 
 function saveLocalUser(user) {
@@ -83,10 +89,9 @@ async function signup(userCred) {
 }
 
 async function logout() {
-   // sessionStorage.removeItem(STORAGE_KEY_LOGGEDIN_USER) //## This is for local storage
+   sessionStorage.removeItem(STORAGE_KEY_LOGGEDIN_USER) //## This is for local storage
    return await httpService.post('auth/logout')
 }
-
 
 function getLoggedinUser() {
    return JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER))

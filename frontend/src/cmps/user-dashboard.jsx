@@ -26,6 +26,7 @@ export function UserDashboard() {
 
    useEffect(() => {
       const fetchTrades = async () => {
+         
          const trades = await tradeService.getTrades(user._id, storeTrades)
          setUserTrades(trades)
       }
