@@ -31,7 +31,6 @@ export const tradeService = {
 window.cs = tradeService
 
 async function query(filterBy = { symbol: '' }) {
-   console.log('loading all trades from backend')
    return httpService.get(BASE_URL, filterBy)
 }
 

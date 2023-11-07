@@ -48,10 +48,14 @@ export function LoginSignup() {
    // login function
    async function onLogin(ev = null) {
       if (ev) ev.preventDefault()
-      if (!credentials.username) return
-      await login(credentials)
-      getCurrUser()
-      clearState()
+      try {
+         if (!credentials.username) return console.log('username not found')
+         await login(credentials)
+         getCurrUser()
+         clearState()
+      } catch (err) {
+         console.log('Failed to login, check username and password', err)
+      }
    }
 
    // signup function
@@ -141,7 +145,9 @@ export function LoginSignup() {
                            onChange={handleChange}
                            required
                         />
-                        <button className='btn-login-gradient pointer'>Login</button>
+                        <button className='btn-login-gradient pointer'>
+                           Login
+                        </button>
                      </form>
                   </div>
                )}
@@ -175,7 +181,9 @@ export function LoginSignup() {
                            required
                         />
                         {/* <ImgUploader onUploaded={onUploaded} /> */}
-                        <button className='btn-login-gradient pointer'>Signup</button>
+                        <button className='btn-login-gradient pointer'>
+                           Signup
+                        </button>
                      </form>
                   )}
                </div>

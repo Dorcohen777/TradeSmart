@@ -252,8 +252,8 @@ function createDemoUser() {
       fullname: 'demo',
       imgUrl:
          'https://www.talpiot.ac.il/wp-content/themes/matat-child/assets/images/12.png',
-      username: 'demoUser',
-      password: '123',
+      username: 'demo'+utilService.makeId(4),
+      password: utilService.makeId(6),
       _id: utilService.makeId(),
    }
 
