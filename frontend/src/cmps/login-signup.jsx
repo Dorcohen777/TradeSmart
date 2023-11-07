@@ -49,7 +49,6 @@ export function LoginSignup() {
    async function onLogin(ev = null) {
       if (ev) ev.preventDefault()
       try {
-         if (!credentials.username) return console.log('username not found')
          await login(credentials)
          getCurrUser()
          clearState()

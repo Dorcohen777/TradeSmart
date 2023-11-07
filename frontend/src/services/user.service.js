@@ -59,7 +59,7 @@ async function login(userCred) {
       console.log('successful login')
       return saveLocalUser(user)
    } else {
-      console.log('login failed')
+      return console.log('login failed')
    }
 }
 
@@ -83,7 +83,7 @@ async function signup(userCred) {
 }
 
 async function logout() {
-   sessionStorage.removeItem(STORAGE_KEY_LOGGEDIN_USER) //## This is for local storage
+   // sessionStorage.removeItem(STORAGE_KEY_LOGGEDIN_USER) //## This is for local storage
    return await httpService.post('auth/logout')
 }
 
@@ -91,9 +91,3 @@ async function logout() {
 function getLoggedinUser() {
    return JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER))
 }
-
-// ;(async ()=>{
-//     await userService.signup({fullname: 'Puki Norma', username: 'puki', password:'123',score: 10000, isAdmin: false})
-//     await userService.signup({fullname: 'Master Adminov', username: 'admin', password:'123', score: 10000, isAdmin: true})
-//     await userService.signup({fullname: 'Muki G', username: 'muki', password:'123', score: 10000})
-// })()
