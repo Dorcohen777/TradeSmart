@@ -10,7 +10,7 @@ export function UserboardNavBar() {
 
     return (
         <section className="user-dashboard-navbar-container">
-            <h2><Link to={'/TradeSmart'} title="Home Page"> <AiOutlineHome/> </Link></h2>
+            <h2><Link to={'/'} title="Home Page"> <AiOutlineHome/> </Link></h2>
             <h2><Link to={'/about-us'} title="About Us"> <AiOutlineInfoCircle/> </Link></h2>
             <h2><Link to={'/ai-helper'} title="Create Strategy"> <LiaRobotSolid/> </Link></h2>
         </section>

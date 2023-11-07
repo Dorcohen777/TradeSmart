@@ -33,8 +33,6 @@ export function EditTrade() {
 
    function onEditChange(event) {
       const { name, value } = event.target
-      console.log('name', name)
-      console.log('value', value)
       setEditTrade((prevTrade) => ({
          ...prevTrade,
          [name]: value,
@@ -42,7 +40,6 @@ export function EditTrade() {
    }
 
    function onSaveTrade(trade) {
-      console.log('trade', trade)
 
       if (selectedStrategy) {
          trade.strategyType = selectedStrategy
@@ -64,7 +61,6 @@ export function EditTrade() {
 
    function onStrategyChange(event) {
       const selectedStrategyValue = event.target.value
-      console.log('selectedStrategyValue', selectedStrategyValue)
       setSelectedStrategy(selectedStrategyValue)
    }
 

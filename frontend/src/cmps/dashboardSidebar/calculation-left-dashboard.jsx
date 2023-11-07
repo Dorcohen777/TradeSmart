@@ -1,4 +1,4 @@
-import {  useState } from 'react'
+import { useState } from 'react'
 import { tradeService } from '../../services/trade.service'
 import { utilService } from '../../services/util.service'
 import { useSelector } from 'react-redux'
@@ -105,14 +105,14 @@ export function SideBarLeft({ addTrade, strategyWinRate }) {
                      Strategy WinRate
                   </h4>
                   {strategyWinRate &&
-                     strategyWinRate.map((str) => {
+                     strategyWinRate.map((str, idx) => {
                         if (str.strategyType !== 'null') {
                            return (
-                              <div className='strategy-inner-data-container'>
-                                 <p
-                                    key={str.strategyType}
-                                    className='strategy-title'
-                                 >
+                              <div
+                                 className='strategy-inner-data-container'
+                                 key={idx}
+                              >
+                                 <p className='strategy-title'>
                                     {str.strategyType}
                                  </p>
                                  <div className='strategy-bar-container'>

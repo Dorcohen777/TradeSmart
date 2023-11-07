@@ -5,7 +5,6 @@ export const marketTiming = {
 }
 
 async function fetchVIXData(date) {
-   console.log('data', date)
    const apiKey = 'gfdWnHyxY9wvUDUSUcgKUKWhPpRvBD02'
    const endpoint = `https://api.polygon.io/v1/open-close/VIX9D/${date}?adjusted=true&apiKey=${apiKey}`
 
@@ -23,7 +22,6 @@ async function fetchVIXData(date) {
 
       const data = response.data
       // Process and use the VIX data here
-      console.log(data)
    } catch (error) {
       console.error('Error fetching VIX data:', error)
    }

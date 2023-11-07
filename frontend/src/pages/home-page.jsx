@@ -22,7 +22,6 @@ export function HomePage() {
    const navigate = useNavigate()
 
    async function onDemoClick() {
-      console.log('click')
       const demoUser = tradeService.createDemoUser()
       await signup(demoUser)
       await login(demoUser)

@@ -7,7 +7,6 @@ export function HeaderDashboard({ loadTrades }) {
    async function onSearchTrade(ev) {
       const { value } = ev.target
       emptyTrade.symbol = value
-      console.log('emptyTrade', emptyTrade)
       await loadTrades(emptyTrade)
    }
    return (

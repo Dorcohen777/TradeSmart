@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { userService } from '../services/user.service'
 import { login, signup, logout } from '../store/user.actions'
 import { ImgUploader } from '../cmps/img-uploader'
+import { showErrorMsg } from '../services/event-bus.service'
 
 // img
 import loginSignupImg from '../assets/img/logsign.jpg'
@@ -25,6 +26,7 @@ export function LoginSignup() {
 
    async function loadUsers() {
       const users = await userService.getUsers()
+      console.log('users', users)
       setUsers(users)
    }
 
@@ -53,7 +55,8 @@ export function LoginSignup() {
          getCurrUser()
          clearState()
       } catch (err) {
-         console.log('Failed to login, check username and password', err)
+         console.log('Failed to login check username and password', err)
+         showErrorMsg('Login failed. Please check your username and password.') // Show an error message
       }
    }
 
@@ -78,7 +81,6 @@ export function LoginSignup() {
    }
 
    function onDashboardClick() {
-      console.log('clicked dashbaord')
       navigate('/user-dashboard')
    }
 
@@ -89,6 +91,7 @@ export function LoginSignup() {
    function onUploaded(imgUrl) {
       setCredentials({ ...credentials, imgUrl })
    }
+   
 
    return (
       <div className='login-page'>
@@ -125,7 +128,10 @@ export function LoginSignup() {
                </p>
                {!isSignup && (
                   <div className='login-signup-container'>
-                     <form className='login-signup-form' onSubmit={onLogin}>
+                     <form
+                        className='login-signup-form'
+                        onSubmit={(ev) => onLogin(ev)}
+                     >
                         <h2 className='underline-style'>Account login</h2>
                         <input
                            type='text'
@@ -153,7 +159,10 @@ export function LoginSignup() {
 
                <div className='login-signup-container'>
                   {isSignup && (
-                     <form className='login-signup-form' onSubmit={onSignup}>
+                     <form
+                        className='login-signup-form'
+                        onSubmit={(ev) => onSignup(ev)}
+                     >
                         <h2 className='underline-style'>Account sign-up</h2>
                         <input
                            type='text'

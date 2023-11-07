@@ -88,7 +88,6 @@ export function StockAlert() {
                      {userAlerts.map((alert, idx) => {
                         return (
                            <tr key={idx}>
-                              {console.log('alert',alert)}
                               <td>{alert.symbol}</td>
                               <td>{alert.alertPrice}</td>
                               <td>

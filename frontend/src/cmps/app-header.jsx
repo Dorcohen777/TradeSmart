@@ -87,7 +87,7 @@ export function AppHeader() {
                         >
                            <ul>
                               <li>
-                                 <Link to={'/TradeSmart'}>Home</Link>
+                                 <Link to={'/'}>Home</Link>
                               </li>
                               <li>
                                  <Link to={'/sign-up'}>Sign up</Link>

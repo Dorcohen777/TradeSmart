@@ -19,7 +19,7 @@ window.userService = userService
 
 function getUsers() {
    // return storageService.query('user') ## This is for local storage
-   return httpService.get(`user`)
+   return httpService.get(`user/`)
 }
 
 async function getById(userId) {
@@ -45,28 +45,12 @@ async function update({ _id, score }) {
 }
 
 async function login(userCred) {
-   /*
-    const users = await storageService.query('user')
-    const user = users.find(
-       (user) =>
-         user.username === userCred.username &&
-         user.password === userCred.password
-    ) ## This is for local storage
-   */
    try {
       const user = await httpService.post('auth/login', userCred)
-         return saveLocalUser(user)
+      return saveLocalUser(user)
    } catch (err) {
-      return console.log('Failed to login - check username or password')
+      throw err
    }
-
-   // const user = await httpService.post('auth/login', userCred)
-   // if (user) {
-   //    console.log('successful login')
-   //    return saveLocalUser(user)
-   // } else {
-   //    return console.log('login failed')
-   // }
 }
 
 function saveLocalUser(user) {

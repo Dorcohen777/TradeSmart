@@ -242,9 +242,6 @@ function calcStrategyWinRate(userTrades) {
 
 function accountTradesAveragePercentage(userTrades) {
    const tradesAveragePerChange = userTrades.reduce((acc, val) => {
-      console.log('acc', acc)
-      console.log('val', val.percentage)
-
       return acc + val.percentage
    }, 0)
 

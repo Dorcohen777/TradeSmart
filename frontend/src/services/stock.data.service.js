@@ -15,7 +15,6 @@ const ALERT_KEY = 'alertDB'
 function getStockData() {}
 
 async function saveStockAlert(symbol) {
-   console.log('symbol from Service', symbol)
    var savedSymbol
    if (symbol._id) {
       savedSymbol = await storageService.put(ALERT_KEY, symbol)
@@ -27,7 +26,6 @@ async function saveStockAlert(symbol) {
 }
 
 function getAlertsByUser(userId) {
-   console.log('userId', userId)
    const alerts = utilService.loadFromStorage(ALERT_KEY)
    const filterAlert = alerts.filter((alert) => alert.owner._id === userId)
    return filterAlert

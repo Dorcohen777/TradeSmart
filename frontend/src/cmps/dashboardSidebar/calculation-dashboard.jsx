@@ -13,7 +13,6 @@ export function CalcContainer(){
          ...prevRiskCalc,
          [name]: value,
       }))
-      console.log('calcExitPoint', calcExitPoint)
    }
 
    function calcTradeRisk() {
@@ -22,7 +21,6 @@ export function CalcContainer(){
          calcExitPoint.sharesAmount,
          calcExitPoint.riskEntryPrice
       )
-      console.log('res', res)
       setTradeExitPrice(res)
    }
 

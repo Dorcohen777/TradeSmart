@@ -108,16 +108,12 @@ function calculatePercentageChange(entryPrice, exitPrice) {
 }
 
 function calculateRiskAmount(accountValue, riskPercentage) {
-   console.log('accountValue', accountValue)
-   console.log('riskPercentage', riskPercentage)
    var riskAmount = (accountValue * riskPercentage) / 100
    return riskAmount
 }
 
 function calculatePercentageAndPrice(riskAmount, sharesAmount, sharesPrice) {
-   console.log('riskAmount', riskAmount)
-   console.log('sharesAmount', sharesAmount)
-   console.log('sharesPrice', sharesPrice)
+
 
    // Calculate the total cost of the investment
    const totalCost = sharesAmount * sharesPrice
@@ -236,8 +232,7 @@ function calcStrategyWinRate(userTrades) {
 
 function accountTradesAveragePercentage(userTrades) {
    const tradesAveragePerChange = userTrades.reduce((acc, val) => {
-      console.log('acc', acc)
-      console.log('val', val.percentage)
+  
 
       return acc + val.percentage
    }, 0)
