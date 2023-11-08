@@ -71,6 +71,7 @@ export function LoginSignup() {
       )
          return
       await signup(credentials)
+      showSuccessMsg('Account created')
       getCurrUser()
       clearState()
    }
