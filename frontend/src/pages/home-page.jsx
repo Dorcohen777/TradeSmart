@@ -2,10 +2,11 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
 
-// img
+// img and components
 import heroImg from '../assets/img/hero-img3.png'
 import { HomeInfo } from './home-info'
 import { HomeQuote } from './home-quote'
+import { Footer } from './footer'
 
 // user actions
 import { login, signup } from '../store/user.actions'
@@ -78,6 +79,7 @@ export function HomePage() {
          </section>
          <HomeInfo />
          <HomeQuote />
+         <Footer/>
       </div>
    )
 }

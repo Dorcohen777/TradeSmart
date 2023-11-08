@@ -1,20 +1,25 @@
-.about-us-main-container{
-    justify-content: center;
-    margin-block-start: 6rem;
-    padding-inline-start: 1rem;
-    color: $clr3;
+.about-us-main-container {
+    min-height: 100vh;
     display: flex;
-    justify-items: center;
+    flex-direction: column;
+   .about-us-container {
+      justify-content: center;
+      margin-block-start: 6rem;
+      padding-inline-start: 1rem;
+      color: $clr3;
+      display: flex;
+      justify-items: center;
 
-    h2{
-        margin-block-end: 2rem;
-    }
-    .about-us-container{
-        width: 100%;
-        max-width: rem(650px);
-        background-color: $clr3;
-        color: $clr2;
-        padding: 3rem;
-        border-radius: 0.5rem;
-    }
+      h2 {
+         margin-block-end: 2rem;
+      }
+      .about-us-text-container {
+         width: 100%;
+         max-width: rem(650px);
+         background-color: $clr3;
+         color: $clr2;
+         padding: 3rem;
+         border-radius: 0.5rem;
+      }
+   }
 }

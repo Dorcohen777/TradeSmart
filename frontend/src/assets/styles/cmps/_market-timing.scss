@@ -1,8 +1,13 @@
-.market-timing-container{
-    padding-inline-start: 2rem;
-    color: $clr3;
-    
-    h1{
-        margin-block-start: 5rem;
-    }
+.market-timing-main-container {
+   min-height: 100vh;
+   display: flex;
+   flex-direction: column;
+   
+   .market-timing-container {
+      padding-inline-start: 2rem;
+      color: $clr3;
+      h1 {
+         margin-block-start: 5rem;
+      }
+   }
 }
