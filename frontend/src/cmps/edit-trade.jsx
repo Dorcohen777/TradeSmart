@@ -6,6 +6,10 @@ import { tradeService } from '../services/trade.service'
 import { updateTrade } from '../store/trade.actions'
 import { userService } from '../services/user.service'
 
+// for pop up message
+import  {UserMsg} from './user-msg'
+import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service'
+
 export function EditTrade() {
    const params = useParams()
    const [currTrade, setCurrTrade] = useState(null)
@@ -53,6 +57,7 @@ export function EditTrade() {
       )
       trade.pl = plUpdate
       updateTrade(trade)
+      showSuccessMsg('Trade saved')
    }
 
    function onCloseEdit() {
@@ -131,6 +136,7 @@ export function EditTrade() {
                X
             </button>
          </div>
+         <UserMsg/>
       </section>
    )
 }

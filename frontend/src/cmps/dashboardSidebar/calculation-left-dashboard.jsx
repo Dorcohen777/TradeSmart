@@ -3,6 +3,10 @@ import { tradeService } from '../../services/trade.service'
 import { utilService } from '../../services/util.service'
 import { useSelector } from 'react-redux'
 
+// for pop up messages
+import { showSuccessMsg, showErrorMsg } from '../../services/event-bus.service'
+import { UserMsg } from '../user-msg'
+
 export function SideBarLeft({ addTrade, strategyWinRate }) {
    const [newTrade, setNewTrade] = useState(tradeService.emptyTrade())
    const [newStrategy, setNewStrategy] = useState({ strategyName: '' })
@@ -36,11 +40,19 @@ export function SideBarLeft({ addTrade, strategyWinRate }) {
       )
       newTrade.timestamp = Date.now()
       addTrade(newTrade)
+      showSuccessMsg('New trade added')
+      console.log('x')
+   }
+
+   function onAddNewStrategy(strategyName){
+      tradeService.saveNewStrategy(strategyName)
+      showSuccessMsg('New strategy added')
    }
 
    return (
       <section>
          <div className='transaction-first-container'>
+            <UserMsg/>
             <div className='transaction-new-trade-container input-container-style-dash'>
                <h2>Add new trade</h2>
                <label>Stock symbol</label>
@@ -91,7 +103,7 @@ export function SideBarLeft({ addTrade, strategyWinRate }) {
                />
                <button
                   className='btn-style-3'
-                  onClick={() => tradeService.saveNewStrategy(newStrategy)}
+                  onClick={() => onAddNewStrategy(newStrategy)}
                >
                   Add
                </button>

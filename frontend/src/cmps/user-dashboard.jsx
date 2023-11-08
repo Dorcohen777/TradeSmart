@@ -5,7 +5,8 @@ import { useSelector } from 'react-redux'
 import { tradeService } from '../services/trade.service'
 import { addTrade, loadTrades, removeTrade } from '../store/trade.actions'
 import { Link, Outlet } from 'react-router-dom'
-
+import { UserMsg } from './user-msg'
+import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service'
 //cmp
 import { CalcContainer } from './dashboardSidebar/calculation-dashboard'
 import { SideBarLeft } from './dashboardSidebar/calculation-left-dashboard'
@@ -57,6 +58,7 @@ export function UserDashboard() {
 
    async function onRemoveTrade(tradeId) {
       await removeTrade(tradeId)
+      showSuccessMsg('Trade removed')
    }
 
    return (
@@ -65,7 +67,7 @@ export function UserDashboard() {
             <div>
                <UserboardNavBar />
             </div>
-
+            
             <div className='transaction-data-container'>
                <div className='dashboard-titles'>
                   <div className='dash-acc-data-container'>
@@ -85,6 +87,7 @@ export function UserDashboard() {
                   </div>
 
                   <Outlet />
+                  <UserMsg/>
                </div>
 
                <h2 className='table-title'>Transactions Panel</h2>
