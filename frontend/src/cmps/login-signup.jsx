@@ -7,6 +7,7 @@ import { UserMsg } from './user-msg'
 // img
 import loginSignupImg from '../assets/img/logsign.jpg'
 import { useNavigate } from 'react-router-dom'
+import { LoadingAnimation } from '../pages/loading'
 
 export function LoginSignup() {
    const [credentials, setCredentials] = useState({
@@ -18,6 +19,15 @@ export function LoginSignup() {
    const [currUser, setCurrUser] = useState(null)
    const [users, setUsers] = useState([])
    const navigate = useNavigate()
+   const [isLoginClick, setIsLoginClick] = useState(null)
+   // const loadingStyleDone = {
+   //    display: 'none',
+   // }
+   // const loadingAnimation = {
+   //    color: 'blue',
+   //    fontSize: '50px',
+   //    text: 'Loading',
+   // }
 
    useEffect(() => {
       loadUsers()
@@ -51,13 +61,17 @@ export function LoginSignup() {
    async function onLogin(ev = null) {
       if (ev) ev.preventDefault()
       try {
+         setIsLoginClick(true)
          await login(credentials)
          getCurrUser()
          clearState()
          showSuccessMsg('Login successfully')
       } catch (err) {
          console.log('Failed to login check username and password', err)
-         showErrorMsg('Login failed. Please check your username and password.') 
+         showErrorMsg('Login failed. Please check your username and password.')
+      }
+      finally{
+         setIsLoginClick(false)
       }
    }
 
@@ -93,6 +107,7 @@ export function LoginSignup() {
    function onUploaded(imgUrl) {
       setCredentials({ ...credentials, imgUrl })
    }
+
    return (
       <div className='login-page'>
          <UserMsg />
@@ -197,6 +212,8 @@ export function LoginSignup() {
                   )}
                </div>
             </div>
+
+            
          </div>
          <div className='login-image-container'>
             {/* <img
@@ -216,6 +233,7 @@ export function LoginSignup() {
                <h3>Make money the smart way.</h3>
             </div>
          </div>
+         {isLoginClick && <LoadingAnimation/>}
       </div>
    )
 }
